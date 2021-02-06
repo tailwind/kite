@@ -1,0 +1,13 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": ["airbnb-typescript", "prettier", "prettier/react", "prettier/@typescript-eslint"],
+  "parserOptions": {
+    "project": "tsconfig.json"
+  },
+  "rules": {
+    "max-len": ["warn", 120],
+    "react/prop-types": ["off"]
+  }
+}
