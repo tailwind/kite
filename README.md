@@ -14,11 +14,11 @@ We got a lot of value starting off from Infinite Red's [Ignite](https://github.c
 
 ## Tech
 <!--- Technologies used -->
-State Management - Redux + Redux Toolkit
-Navigation - React Navigation
-Component Lib - Custom
-CI/CD - Github Actions, Fastlane, & CodePush
-Testing - Detox
+- State Management: Redux + Redux Toolkit
+- Navigation: React Navigation
+- Component Lib: Custom
+- CI/CD: Github Actions, Fastlane, & CodePush
+- Testing: Jest & Detox
 
 ## Anatomy
 <!--- Project Organization -->
