@@ -1,0 +1,10 @@
+name: 'FS Diff'
+on: [pull_request]
+jobs:
+  fs-diff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: garrettjoecox/fs-diff@main
+        with:
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
