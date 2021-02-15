@@ -1,5 +1,6 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { FC } from 'react';
-import { StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { Button, StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import {
   Colors,
@@ -8,6 +9,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { RootStackNavigationProp } from 'src/domains/core/screens/RootStackNavigator';
 
 const styles = StyleSheet.create({
   sectionContainer: {
@@ -56,6 +58,7 @@ const Section: FC<{ title: string }> = ({ children, title }) => {
 
 export const HomeScreen: FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
+  const navigation = useNavigation<RootStackNavigationProp<'BottomTabNavigator'>>();
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -73,6 +76,15 @@ export const HomeScreen: FC = () => {
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then come back to see your
             edits.
+          </Section>
+          <Section title="Open a modal">
+            <Button
+              onPress={() => {
+                navigation.navigate('ModalTutorialScreen');
+              }}
+              title="Open">
+              Open
+            </Button>
           </Section>
           <Section title="See Your Changes">
             <ReloadInstructions />
