@@ -21,7 +21,6 @@ export const listTodos = createAsyncThunk<
   }
 >('todo/listTodos', async () => {
   const todos = await todoApi.listTodos();
-  console.log('test', todos);
 
   return todos;
 });
@@ -34,7 +33,6 @@ export const createTodo = createAsyncThunk<
   }
 >('todo/createTodo', async content => {
   const todo = await todoApi.createTodo(content);
-  console.log('test', todo);
 
   return todo;
 });

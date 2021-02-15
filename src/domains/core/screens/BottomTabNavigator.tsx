@@ -3,6 +3,7 @@ import { CompositeNavigationProp } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { AppStackNavigatorProp } from 'src/domains/core/screens/AppStackNavigator';
 import { HomeScreen } from 'src/domains/home/HomeScreen';
+import { AsyncLocalTodoScreen } from 'src/domains/todo/screens/AsyncLocalTodoScreen';
 import { AsyncReduxTodoScreen } from 'src/domains/todo/screens/AsyncReduxTodoScreen';
 import { SyncReduxTodoScreen } from 'src/domains/todo/screens/SyncReduxTodoScreen';
 
@@ -27,6 +28,6 @@ export const BottomTabNavigator: FC = () => (
     <Tab.Screen name="SyncRedux" component={SyncReduxTodoScreen} />
     <Tab.Screen name="AsyncRedux" component={AsyncReduxTodoScreen} />
     <Tab.Screen name="SyncLocal" component={HomeScreen} />
-    <Tab.Screen name="AsyncLocal" component={HomeScreen} />
+    <Tab.Screen name="AsyncLocal" component={AsyncLocalTodoScreen} />
   </Tab.Navigator>
 );

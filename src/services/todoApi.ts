@@ -21,12 +21,12 @@ export async function listTodos(): Promise<Todo[]> {
 }
 
 export async function createTodo(content: string): Promise<Todo> {
-  if (content === 'delay') {
+  if (content === 'Delay') {
     await new Promise(r => setTimeout(r, 2000));
-  } else if (content === 'serverError') {
-    return Promise.reject();
-  } else if (content === 'serverFail') {
-    return Promise.reject();
+  } else if (content === 'ServerError') {
+    throw new Error('Server Error');
+  } else if (content === 'ServerFail') {
+    throw new Error('Server Failure');
   }
 
   const newTodo: Todo = {
