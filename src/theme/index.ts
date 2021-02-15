@@ -1,17 +1,17 @@
 import { useTheme } from '@emotion/react';
 import _ from 'lodash';
 import { useMemo } from 'react';
-import Button from 'src/components/Button/theme';
+import { buttonTheme } from 'src/components/Button/theme';
+import { contentTheme } from 'src/components/Content/theme';
 import * as foundations from './foundations';
 
 export const theme = {
   ...foundations,
   components: {
-    Button,
+    Button: buttonTheme,
+    Content: contentTheme,
   },
 };
-
-export default theme;
 
 export type Theme = typeof theme;
 

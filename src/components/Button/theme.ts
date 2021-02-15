@@ -20,7 +20,7 @@ export type ButtonThemeProps = Props &
     [Part in keyof Parts as `${Part}Style`]?: Parts[Part];
   };
 
-const buttonMultiComponentStyleConfig: Themeable<Props, Parts> = {
+export const buttonTheme: Themeable<Props, Parts> = {
   parts: ['button', 'text'],
   baseStyle: {
     text: {},
@@ -39,41 +39,24 @@ const buttonMultiComponentStyleConfig: Themeable<Props, Parts> = {
     variant: {
       solid: {
         button: (props: Props, theme: Theme) => ({
-          backgroundColor: _.get(
-            theme,
-            ['colors', `${props.colorScheme}`, 500],
-            _.get(theme, ['colors', `${props.colorScheme}`]),
-          ),
+          backgroundColor: getColor(props, theme),
         }),
         text: {
           color: 'white',
-          fontSize: 24,
         },
       },
       outline: {
         button: (props: Props, theme: Theme) => ({
           borderWidth: 2,
-          borderColor: _.get(
-            theme,
-            ['colors', `${props.colorScheme}`, 500],
-            _.get(theme, ['colors', `${props.colorScheme}`]),
-          ),
+          borderColor: getColor(props, theme),
         }),
         text: (props: Props, theme: Theme) => ({
-          color: _.get(
-            theme,
-            ['colors', `${props.colorScheme}`, 500],
-            _.get(theme, ['colors', `${props.colorScheme}`]),
-          ),
+          color: getColor(props, theme),
         }),
       },
       ghost: {
         text: (props: Props, theme: Theme) => ({
-          color: _.get(
-            theme,
-            ['colors', `${props.colorScheme}`, 500],
-            _.get(theme, ['colors', `${props.colorScheme}`]),
-          ),
+          color: getColor(props, theme),
         }),
       },
     },
@@ -93,7 +76,7 @@ const buttonMultiComponentStyleConfig: Themeable<Props, Parts> = {
           paddingHorizontal: 15,
         },
         text: {
-          fontSize: 22,
+          fontSize: 20,
         },
       },
       sm: {
@@ -130,4 +113,6 @@ const buttonMultiComponentStyleConfig: Themeable<Props, Parts> = {
   },
 };
 
-export default buttonMultiComponentStyleConfig;
+function getColor(props: any, theme: Theme) {
+  return _.get(theme, ['colors', `${props.colorScheme}`, 500], _.get(theme, ['colors', `${props.colorScheme}`]));
+}
