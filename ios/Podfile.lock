@@ -58,6 +58,8 @@ PODS:
     - FlipperKit/Core
     - FlipperKit/FlipperKitNetworkPlugin
   - glog (0.3.5)
+  - hermes-engine (0.7.2)
+  - libevent (2.1.11)
   - OpenSSL-Universal (1.0.2.20):
     - OpenSSL-Universal/Static (= 1.0.2.20)
   - OpenSSL-Universal/Static (1.0.2.20)
@@ -70,6 +72,11 @@ PODS:
     - boost-for-react-native
     - DoubleConversion
     - glog
+  - RCT-Folly/Futures (2020.01.13.00):
+    - boost-for-react-native
+    - DoubleConversion
+    - glog
+    - libevent
   - RCTRequired (0.64.0-rc.3)
   - RCTTypeSafety (0.64.0-rc.3):
     - FBLazyVector (= 0.64.0-rc.3)
@@ -125,6 +132,16 @@ PODS:
     - React-jsi (= 0.64.0-rc.3)
     - React-jsiexecutor (= 0.64.0-rc.3)
     - React-jsinspector (= 0.64.0-rc.3)
+    - React-perflogger (= 0.64.0-rc.3)
+    - Yoga
+  - React-Core/Hermes (0.64.0-rc.3):
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2020.01.13.00)
+    - RCT-Folly/Futures
+    - React-cxxreact (= 0.64.0-rc.3)
+    - React-jsi (= 0.64.0-rc.3)
+    - React-jsiexecutor (= 0.64.0-rc.3)
     - React-perflogger (= 0.64.0-rc.3)
     - Yoga
   - React-Core/RCTActionSheetHeaders (0.64.0-rc.3):
@@ -358,6 +375,8 @@ DEPENDENCIES:
   - FlipperKit/FlipperKitUserDefaultsPlugin (~> 0.54.0)
   - FlipperKit/SKIOSNetworkPlugin (~> 0.54.0)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - hermes-engine (~> 0.7.2)
+  - libevent (from `../node_modules/react-native/third-party-podspecs/libevent.podspec`)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
@@ -365,6 +384,7 @@ DEPENDENCIES:
   - React-callinvoker (from `../node_modules/react-native/ReactCommon/callinvoker`)
   - React-Core (from `../node_modules/react-native/`)
   - React-Core/DevSupport (from `../node_modules/react-native/`)
+  - React-Core/Hermes (from `../node_modules/react-native/`)
   - React-Core/RCTWebSocket (from `../node_modules/react-native/`)
   - React-CoreModules (from `../node_modules/react-native/React/CoreModules`)
   - React-cxxreact (from `../node_modules/react-native/ReactCommon/cxxreact`)
@@ -403,6 +423,7 @@ SPEC REPOS:
     - Flipper-PeerTalk
     - Flipper-RSocket
     - FlipperKit
+    - hermes-engine
     - OpenSSL-Universal
     - YogaKit
 
@@ -415,6 +436,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/React/FBReactNativeSpec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  libevent:
+    :podspec: "../node_modules/react-native/third-party-podspecs/libevent.podspec"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTRequired:
@@ -491,6 +514,8 @@ SPEC CHECKSUMS:
   Flipper-RSocket: a3acb8812d6adf127deb0a5edae2793b97e6b641
   FlipperKit: ab353d41aea8aae2ea6daaf813e67496642f3d7d
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
+  hermes-engine: 7d97ba46a1e29bacf3e3c61ecb2804a5ddd02d4f
+  libevent: 867cc03e654415675bcacf9726871a37c4b56b8a
   OpenSSL-Universal: ff34003318d5e1163e9529b08470708e389ffcdd
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: cff6c2b6d032642cc892d3516bca5da0dfe86f38
@@ -524,6 +549,6 @@ SPEC CHECKSUMS:
   Yoga: 31313df467e58b5b53f26a0319fa100159c79fa3
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: d93431e0fe7c1ba4e5e233669b5a9b0b29f80f1a
+PODFILE CHECKSUM: 217b8967e09f5059d7513e1729707b2ed0fb1a1b
 
 COCOAPODS: 1.10.1
