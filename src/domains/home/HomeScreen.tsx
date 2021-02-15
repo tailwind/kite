@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   Colors,
   DebugInstructions,
@@ -63,7 +62,7 @@ export const HomeScreen: FC = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <View style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView contentInsetAdjustmentBehavior="automatic" style={backgroundStyle}>
         <Header />
@@ -85,6 +84,6 @@ export const HomeScreen: FC = () => {
           <LearnMoreLinks />
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
