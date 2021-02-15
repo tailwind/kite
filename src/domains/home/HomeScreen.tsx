@@ -1,7 +1,7 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { FC } from 'react';
-import { StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { Button, StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   Colors,
   DebugInstructions,
@@ -9,6 +9,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { BottomTabNavigatorProp } from 'src/domains/core/screens/BottomTabNavigator';
 
 const styles = StyleSheet.create({
   sectionContainer: {
@@ -57,13 +58,14 @@ const Section: FC<{ title: string }> = ({ children, title }) => {
 
 export const HomeScreen: FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
+  const navigation = useNavigation<BottomTabNavigatorProp<'Home'>>();
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <View style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView contentInsetAdjustmentBehavior="automatic" style={backgroundStyle}>
         <Header />
@@ -75,6 +77,15 @@ export const HomeScreen: FC = () => {
             Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then come back to see your
             edits.
           </Section>
+          <Section title="Open a modal">
+            <Button
+              onPress={() => {
+                navigation.navigate('ModalTutorialScreen');
+              }}
+              title="Open">
+              Open
+            </Button>
+          </Section>
           <Section title="See Your Changes">
             <ReloadInstructions />
           </Section>
@@ -85,6 +96,6 @@ export const HomeScreen: FC = () => {
           <LearnMoreLinks />
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
