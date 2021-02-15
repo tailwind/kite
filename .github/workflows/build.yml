@@ -71,4 +71,4 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - run: npm run test
+      - run: npm run test:unit

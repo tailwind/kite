@@ -1,0 +1,15 @@
+{
+  "preset": "react-native",
+  "rootDir": "../../",
+  "testMatch": ["**/__tests__/unit/**/*.[jt]s?(x)", "**/?(*.)+(test).[jt]s?(x)"],
+  "testPathIgnorePatterns": ["/node_modules/", "./init.js"],
+  "transformIgnorePatterns": [
+    "node_modules/(?!(@react-native|react-native|react-native-iphone-x-helper|react-native-gesture-handler|@react-navigation|react-native-vector-icons|react-native-reanimated|@react-native-firebase|react-native-webview|@react-native-community|react-native-image-crop-picker|rn-fetch-blob|react-native-receive-sharing-intent|react-native-share|react-native-draggable-grid|react-native-video|react-native-iap|instabug-reactnative|react-native-appsflyer|react-native-intercom|react-native-safe-area-view|react-native-text-size|assets|@tailwindapp/mobile-triforce-theme|react-native-linear-gradient|emoji-toolkit|react-native-progress-circle|@segment/analytics-react-native|react-native-code-push)/|@?ptomasroos/react-native-multi-slider|@react-native-picker/picker)"
+  ],
+  "setupFiles": [
+    "./node_modules/react-native/jest/setup.js",
+    "./node_modules/react-native-gesture-handler/jestSetup.js",
+    "./__tests__/unit/init.js"
+  ],
+  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
+}

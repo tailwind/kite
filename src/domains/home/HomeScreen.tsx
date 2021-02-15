@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   Colors,
   DebugInstructions,
@@ -53,7 +55,7 @@ const Section: FC<{ title: string }> = ({ children, title }) => {
   );
 };
 
-const App: FC = () => {
+export const HomeScreen: FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -86,5 +88,3 @@ const App: FC = () => {
     </SafeAreaView>
   );
 };
-
-export default App;
