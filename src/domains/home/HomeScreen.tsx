@@ -77,13 +77,22 @@ export const HomeScreen: FC = () => {
             Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then come back to see your
             edits.
           </Section>
-          <Section title="Open a modal">
+          <Section title="Present a modal">
             <Button
               onPress={() => {
                 navigation.navigate('ModalTutorialScreen');
               }}
               title="Open">
               Open
+            </Button>
+          </Section>
+          <Section title="Push a detail screen">
+            <Button
+              onPress={() => {
+                navigation.push('DetailTutorialScreen');
+              }}
+              title="Open">
+              Push
             </Button>
           </Section>
           <Section title="See Your Changes">
