@@ -1,7 +1,7 @@
 import { BottomTabNavigationProp, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { CompositeNavigationProp } from '@react-navigation/native';
 import React, { FC } from 'react';
-import { RootStackNavigationProp } from 'src/domains/core/screens/RootStackNavigator';
+import { AppStackNavigatorProp } from 'src/domains/core/screens/AppStackNavigator';
 import { HomeScreen } from 'src/domains/home/HomeScreen';
 
 export type BottomTabNavigatorParams = {
@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator<BottomTabNavigatorParams>();
 
 export type BottomTabNavigatorProp<ScreenName extends keyof BottomTabNavigatorParams> = CompositeNavigationProp<
   BottomTabNavigationProp<BottomTabNavigatorParams, ScreenName>,
-  RootStackNavigationProp<'BottomTabNavigator'>
+  AppStackNavigatorProp<'BottomTabNavigator'>
 >;
 
 export const BottomTabNavigator: FC = () => (
