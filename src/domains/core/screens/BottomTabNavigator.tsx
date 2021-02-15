@@ -1,20 +1,21 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React from 'react';
+import React, { FC } from 'react';
 import { HomeScreen } from 'src/domains/home/HomeScreen';
 
-export type BottomTabNavigatorParmList = {
+export type BottomTabNavigatorParamList = {
   Home: undefined;
+  Home1: undefined;
+  Home2: undefined;
+  Home3: undefined;
 };
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
 
-export function BottomTabNavigator() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Home1" component={HomeScreen} />
-      <Tab.Screen name="Home2" component={HomeScreen} />
-      <Tab.Screen name="Home3" component={HomeScreen} />
-    </Tab.Navigator>
-  );
-}
+export const BottomTabNavigator: FC = () => (
+  <Tab.Navigator>
+    <Tab.Screen name="Home" component={HomeScreen} />
+    <Tab.Screen name="Home1" component={HomeScreen} />
+    <Tab.Screen name="Home2" component={HomeScreen} />
+    <Tab.Screen name="Home3" component={HomeScreen} />
+  </Tab.Navigator>
+);
