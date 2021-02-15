@@ -1,8 +1,10 @@
 import { createEntityAdapter, createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
 import { AppState } from 'src/state';
 
-type Todo = {
-  id: string;
+export type TodoId = string;
+
+export type Todo = {
+  id: TodoId;
   content: string;
   completed: boolean;
 };
@@ -28,10 +30,19 @@ export const todoSlice = createSlice({
         completed: false,
       });
     },
+    toggleTodo(state, action: PayloadAction<TodoId>) {
+      todoAdapter.updateOne(state, {
+        id: action.payload,
+        changes: { completed: !state.entities[action.payload]?.completed },
+      });
+    },
+    deleteTodo(state, action: PayloadAction<TodoId>) {
+      todoAdapter.removeOne(state, action.payload);
+    },
   },
   extraReducers: () => {},
 });
 
-export const { createTodo } = todoSlice.actions;
+export const { createTodo, toggleTodo, deleteTodo } = todoSlice.actions;
 
 export const todoReducer = todoSlice.reducer;
