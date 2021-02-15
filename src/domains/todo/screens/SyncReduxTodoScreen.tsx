@@ -1,9 +1,9 @@
 import React, { FC, useCallback, useState } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { Todo } from 'src/domains/todoApp/components/Todo';
+import { Todo } from 'src/domains/todo/components/Todo';
 import { AppDispatch } from 'src/state';
-import { createTodo, deleteTodo, selectAllTodos, toggleTodo } from 'src/state/todoSlice';
+import { addTodo, removeTodo, selectAllTodos, toggleTodo } from 'src/state/todoSlice';
 
 export const SyncReduxTodoScreen: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -11,7 +11,7 @@ export const SyncReduxTodoScreen: FC = () => {
   const [newTodoContent, setNewTodoContent] = useState<string>('');
 
   const onCreate = useCallback(() => {
-    dispatch(createTodo(newTodoContent));
+    dispatch(addTodo(newTodoContent));
     setNewTodoContent('');
   }, [dispatch, newTodoContent]);
 
@@ -23,7 +23,7 @@ export const SyncReduxTodoScreen: FC = () => {
           key={todo.id}
           content={todo.content}
           completed={todo.completed}
-          onDelete={() => dispatch(deleteTodo(todo.id))}
+          onDelete={() => dispatch(removeTodo(todo.id))}
           onToggle={() => dispatch(toggleTodo(todo.id))}
         />
       ))}
