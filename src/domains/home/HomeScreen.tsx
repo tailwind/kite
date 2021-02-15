@@ -9,7 +9,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import { RootStackNavigationProp } from 'src/domains/core/screens/RootStackNavigator';
+import { BottomTabNavigatorProp } from 'src/domains/core/screens/BottomTabNavigator';
 
 const styles = StyleSheet.create({
   sectionContainer: {
@@ -58,7 +58,7 @@ const Section: FC<{ title: string }> = ({ children, title }) => {
 
 export const HomeScreen: FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
-  const navigation = useNavigation<RootStackNavigationProp<'BottomTabNavigator'>>();
+  const navigation = useNavigation<BottomTabNavigatorProp<'Home'>>();
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,

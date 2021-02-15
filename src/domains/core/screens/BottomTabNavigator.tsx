@@ -1,15 +1,22 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomTabNavigationProp, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { CompositeNavigationProp } from '@react-navigation/native';
 import React, { FC } from 'react';
+import { RootStackNavigationProp } from 'src/domains/core/screens/RootStackNavigator';
 import { HomeScreen } from 'src/domains/home/HomeScreen';
 
-export type BottomTabNavigatorParamList = {
+export type BottomTabNavigatorParams = {
   Home: undefined;
   Home1: undefined;
   Home2: undefined;
   Home3: undefined;
 };
 
-const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
+const Tab = createBottomTabNavigator<BottomTabNavigatorParams>();
+
+export type BottomTabNavigatorProp<ScreenName extends keyof BottomTabNavigatorParams> = CompositeNavigationProp<
+  BottomTabNavigationProp<BottomTabNavigatorParams, ScreenName>,
+  RootStackNavigationProp<'BottomTabNavigator'>
+>;
 
 export const BottomTabNavigator: FC = () => (
   <Tab.Navigator>
