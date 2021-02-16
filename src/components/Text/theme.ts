@@ -4,8 +4,8 @@ import { TextStyle } from 'react-native';
 import { Theme } from 'src/theme/index';
 
 type Props = {
-  fontSize?: 'xs' | 'sm' | 'md' | 'lg';
-  fontWeight?: 'light' | 'regular' | 'bold';
+  fontSize?: keyof Theme['typography']['fontSizes'];
+  fontWeight?: keyof Theme['typography']['fontWeights'];
   color?: keyof Theme['colors'];
 };
 
@@ -20,56 +20,17 @@ export const textTheme: Themeable<Props, Parts> = {
   baseStyle: {
     text: (props: Props, theme: Theme) => ({
       color: getColor(props, theme),
+      fontSize: _.get(theme, ['typography', 'fontSizes', props.fontSize!]),
+      fontWeight: _.get(theme, ['typography', 'fontWeights', props.fontWeight!]) as TextStyle['fontWeight'],
     }),
   },
   defaultProps: {
     fontSize: 'sm',
-    fontWeight: 'regular',
+    fontWeight: 'normal',
     color: 'black',
-  },
-  props: {
-    fontSize: {
-      lg: {
-        text: {
-          fontSize: 28,
-        },
-      },
-      md: {
-        text: {
-          fontSize: 20,
-        },
-      },
-      sm: {
-        text: {
-          fontSize: 15,
-        },
-      },
-      xs: {
-        text: {
-          fontSize: 12,
-        },
-      },
-    },
-    fontWeight: {
-      light: {
-        text: {
-          fontWeight: '300',
-        },
-      },
-      regular: {
-        text: {
-          fontWeight: '400',
-        },
-      },
-      bold: {
-        text: {
-          fontWeight: '700',
-        },
-      },
-    },
   },
 };
 
 function getColor(props: any, theme: Theme) {
-  return _.get(theme, ['colors', `${props.color}`, 500], _.get(theme, ['colors', `${props.color}`]));
+  return _.get(theme, `colors.${props.color}.500`, _.get(theme, `colors.${props.color}`));
 }

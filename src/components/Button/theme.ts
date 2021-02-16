@@ -111,5 +111,5 @@ export const buttonTheme: Themeable<Props, Parts> = {
 };
 
 function getColor(props: any, theme: Theme) {
-  return _.get(theme, ['colors', `${props.colorScheme}`, 500], _.get(theme, ['colors', `${props.colorScheme}`]));
+  return _.get(theme, `colors.${props.colorScheme}.500`, _.get(theme, `colors.${props.colorScheme}`));
 }
