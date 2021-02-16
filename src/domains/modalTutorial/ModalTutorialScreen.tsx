@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { Screen } from 'src/components/Screen';
+import { Text } from 'src/components/Text';
 
 export const ModalTutorialScreen: FC = () => (
   <Screen variant="scrolling" unsafe>

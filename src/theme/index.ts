@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import { buttonTheme } from 'src/components/Button/theme';
 import { contentTheme } from 'src/components/Content/theme';
 import { screenTheme } from 'src/components/Screen/theme';
+import { textTheme } from 'src/components/Text/theme';
 import * as foundations from './foundations';
 
 export const theme = {
@@ -12,6 +13,7 @@ export const theme = {
     Button: buttonTheme,
     Content: contentTheme,
     Screen: screenTheme,
+    Text: textTheme,
   },
 };
 
