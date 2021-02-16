@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { useMemo } from 'react';
 import { buttonTheme } from 'src/components/Button/theme';
 import { contentTheme } from 'src/components/Content/theme';
+import { screenTheme } from 'src/components/Screen/theme';
 import * as foundations from './foundations';
 
 export const theme = {
@@ -10,6 +11,7 @@ export const theme = {
   components: {
     Button: buttonTheme,
     Content: contentTheme,
+    Screen: screenTheme,
   },
 };
 
