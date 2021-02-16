@@ -1,4 +1,4 @@
-import { Themeable } from '@emotion/react';
+import { Themeable, ThemeableProps } from '@emotion/react';
 import { TextStyle, ViewStyle } from 'react-native';
 
 type Props = {
@@ -17,10 +17,7 @@ type Parts = {
   subText: TextStyle;
 };
 
-export type ContentThemeProps = Props &
-  {
-    [Part in keyof Parts as `${Part}Style`]?: Parts[Part];
-  };
+export type ContentThemeProps = ThemeableProps<Props, Parts>;
 
 export const contentTheme: Themeable<Props, Parts> = {
   parts: ['row', 'center', 'top', 'bottom', 'left', 'right', 'text', 'subText'],

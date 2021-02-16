@@ -21,4 +21,9 @@ declare module '@emotion/react' {
       };
     };
   };
+
+  export type ThemeableProps<Props, Parts> = Props &
+    {
+      [Part in keyof Parts as `${Part}Style`]?: Parts[Part];
+    };
 }

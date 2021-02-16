@@ -1,6 +1,6 @@
-import { Themeable } from '@emotion/react';
+import { Themeable, ThemeableProps } from '@emotion/react';
 import _ from 'lodash';
-import { TextProps, TouchableOpacityProps } from 'react-native';
+import { TextStyle, TouchableOpacityProps } from 'react-native';
 import { Theme } from 'src/theme/index';
 
 type Props = {
@@ -12,13 +12,10 @@ type Props = {
 
 type Parts = {
   button: TouchableOpacityProps['style'];
-  text: TextProps['style'];
+  text: TextStyle;
 };
 
-export type ButtonThemeProps = Props &
-  {
-    [Part in keyof Parts as `${Part}Style`]?: Parts[Part];
-  };
+export type ButtonThemeProps = ThemeableProps<Props, Parts>;
 
 export const buttonTheme: Themeable<Props, Parts> = {
   parts: ['button', 'text'],

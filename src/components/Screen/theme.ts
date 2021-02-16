@@ -1,4 +1,4 @@
-import { Themeable } from '@emotion/react';
+import { Themeable, ThemeableProps } from '@emotion/react';
 import { ViewStyle } from 'react-native';
 
 type Props = {
@@ -10,10 +10,7 @@ type Parts = {
   innerContainer: ViewStyle;
 };
 
-export type ScreenThemeProps = Props &
-  {
-    [Part in keyof Parts as `${Part}Style`]?: Parts[Part];
-  };
+export type ScreenThemeProps = ThemeableProps<Props, Parts>;
 
 export const screenTheme: Themeable<Props, Parts> = {
   parts: ['outerContainer', 'innerContainer'],
