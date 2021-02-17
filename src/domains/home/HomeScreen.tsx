@@ -61,12 +61,8 @@ export const HomeScreen: FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const navigation = useNavigation<BottomTabNavigatorProp<'Home'>>();
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <Screen variant="scrolling" outerContainerStyle={backgroundStyle}>
+    <Screen variant="scrolling">
       <Header />
       <View
         style={{

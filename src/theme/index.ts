@@ -8,7 +8,13 @@ import { textTheme } from 'src/components/Text/theme';
 import * as foundations from './foundations';
 
 export const theme = {
-  ...foundations,
+  overrides: {
+    backgroundColor: foundations.colors,
+    color: foundations.colors,
+    borderColor: foundations.colors,
+    fontWeight: foundations.fontWeights,
+    fontSize: foundations.fontSizes,
+  },
   components: {
     Button: buttonTheme,
     Content: contentTheme,
@@ -31,7 +37,8 @@ export const useThemeable = <
 >(
   themeKey: ComponentKey,
   incomingProps: ComponentThemeProps,
-): NonNullable<Flatten<ComponentConfig['baseStyle']>> => {
+): any => {
+  // ): NonNullable<Flatten<ComponentConfig['baseStyle']>> => {
   const t = useTheme();
   const componentConfig = useMemo(() => _.get(t, ['components', themeKey], {}) as ComponentConfig, [t, themeKey]);
   const parts = useMemo(() => Object.keys(componentConfig.baseStyle), [componentConfig]);
@@ -67,11 +74,21 @@ export const useThemeable = <
             [part]: executeIfFunc(_.get(componentConfig, ['baseStyle', part], {}), [props, t]),
           });
 
+          _.each(result[part], (value, index) => {
+            if (t.overrides[index]) {
+              if (t.overrides[index][value]) {
+                result[part][index] = t.overrides[index][value];
+              } else {
+                throw new Error(`${themeKey}: ${index} does not support the value ${value}`);
+              }
+            }
+          });
+
           return result;
         },
         {} as any,
       ),
-    [componentConfig, parts, propKeys, props, t],
+    [componentConfig, parts, propKeys, props, t, themeKey],
   );
 
   return style;

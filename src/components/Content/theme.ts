@@ -21,11 +21,11 @@ export const contentTheme: Themeable<ContentProps, ContentParts> = {
       paddingHorizontal: 20,
     },
     text: {
-      fontSize: 18,
-      fontWeight: '600',
+      fontSize: 'sm',
+      fontWeight: 'bold',
     },
     subText: {
-      fontSize: 10,
+      fontSize: 'xs',
       color: 'gray',
     },
   },
@@ -37,10 +37,10 @@ export const contentTheme: Themeable<ContentProps, ContentParts> = {
     size: {
       lg: {
         text: {
-          fontSize: 24,
+          fontSize: 'md',
         },
         subText: {
-          fontSize: 16,
+          fontSize: 'sm',
         },
       },
     },

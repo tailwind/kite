@@ -5,9 +5,8 @@ declare module '@emotion/react' {
   export interface Theme extends MyTheme {}
 
   export type Themeable<Props, Parts> = {
-    // parts: (keyof Parts)[];
     baseStyle: {
-      [Part in keyof Parts]: Parts[Part] | ((props: Props, theme: Theme) => Parts[Part]);
+      [Part in keyof Parts]: ThemeOverride<Parts[Part]> | ((props: Props, theme: Theme) => ThemeOverride<Parts[Part]>);
     };
     defaultProps?: {
       [Prop in keyof Props]?: Props[Prop];
@@ -16,7 +15,9 @@ declare module '@emotion/react' {
       [Prop in keyof Props]?: {
         // @ts-expect-error
         [key in Props[Prop]]?: {
-          [Part in keyof Parts]?: Parts[Part] | ((props: Props, theme: Theme) => Parts[Part]);
+          [Part in keyof Parts]?:
+            | ThemeOverride<Parts[Part]>
+            | ((props: Props, theme: Theme) => ThemeOverride<Parts[Part]>);
         };
       };
     };
@@ -25,6 +26,11 @@ declare module '@emotion/react' {
   export type ThemeableProps<Props, Parts> = Props & PartStyleProps<Parts>;
 
   export type PartStyleProps<Parts> = {
-    [Part in keyof Parts as `${Part}Style`]?: Parts[Part];
+    [Part in keyof Parts as `${Part}Style`]?: ThemeOverride<Parts[Part]>;
   };
+
+  export type ThemeOverride<T = any> = Omit<T, keyof Theme['overrides']> &
+    {
+      [Override in keyof Theme['overrides']]?: keyof Theme['overrides'][Override];
+    };
 }

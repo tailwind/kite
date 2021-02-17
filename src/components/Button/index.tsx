@@ -1,17 +1,17 @@
 import { PartStyleProps } from '@emotion/react';
 import React, { FC, useMemo } from 'react';
-import { Text, TextStyle, TouchableOpacity, TouchableOpacityProps } from 'react-native';
+import { Text, TextStyle, TouchableOpacity, TouchableOpacityProps, ViewStyle } from 'react-native';
 import { Theme, useThemeable } from 'src/theme';
 
 export type ButtonParts = {
-  button: TouchableOpacityProps['style'];
+  button: ViewStyle;
   text: TextStyle;
 };
 
 export interface ButtonProps extends TouchableOpacityProps, PartStyleProps<ButtonParts> {
   variant?: 'solid' | 'outline' | 'ghost';
   size?: 'xs' | 'sm' | 'md' | 'lg';
-  colorScheme?: keyof Theme['colors'];
+  colorScheme?: keyof Theme['overrides']['color'];
   rounded?: 'none' | 'sm' | 'full';
 }
 

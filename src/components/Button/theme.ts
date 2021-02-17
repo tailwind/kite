@@ -1,7 +1,5 @@
 import { Themeable } from '@emotion/react';
-import _ from 'lodash';
 import { ButtonParts, ButtonProps } from 'src/components/Button';
-import { Theme } from 'src/theme/index';
 
 export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
   baseStyle: {
@@ -14,31 +12,32 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
   },
   defaultProps: {
     variant: 'solid',
-    colorScheme: 'gray',
+    colorScheme: 'blue',
     size: 'md',
+    rounded: 'full',
   },
   props: {
     variant: {
       solid: {
-        button: (props: ButtonProps, theme: Theme) => ({
-          backgroundColor: getColor(props, theme),
+        button: (props: ButtonProps) => ({
+          backgroundColor: props.colorScheme,
         }),
         text: {
           color: 'white',
         },
       },
       outline: {
-        button: (props: ButtonProps, theme: Theme) => ({
+        button: (props: ButtonProps) => ({
           borderWidth: 2,
-          borderColor: getColor(props, theme),
+          borderColor: props.colorScheme,
         }),
-        text: (props: ButtonProps, theme: Theme) => ({
-          color: getColor(props, theme),
+        text: (props: ButtonProps) => ({
+          color: props.colorScheme,
         }),
       },
       ghost: {
-        text: (props: ButtonProps, theme: Theme) => ({
-          color: getColor(props, theme),
+        text: (props: ButtonProps) => ({
+          color: props.colorScheme,
         }),
       },
     },
@@ -49,7 +48,7 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
           paddingHorizontal: 20,
         },
         text: {
-          fontSize: 28,
+          fontSize: 'lg',
         },
       },
       md: {
@@ -58,7 +57,7 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
           paddingHorizontal: 15,
         },
         text: {
-          fontSize: 20,
+          fontSize: 'md',
         },
       },
       sm: {
@@ -67,7 +66,7 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
           paddingHorizontal: 10,
         },
         text: {
-          fontSize: 15,
+          fontSize: 'sm',
         },
       },
       xs: {
@@ -76,7 +75,7 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
           paddingHorizontal: 8,
         },
         text: {
-          fontSize: 12,
+          fontSize: 'xs',
         },
       },
     },
@@ -94,7 +93,3 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
     },
   },
 };
-
-function getColor(props: any, theme: Theme) {
-  return _.get(theme, `colors.${props.colorScheme}.500`, _.get(theme, `colors.${props.colorScheme}`));
-}
