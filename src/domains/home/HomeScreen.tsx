@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { FC } from 'react';
-import { Button, StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import {
   Colors,
@@ -9,6 +9,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { Button } from 'src/components/Button';
 import { BottomTabNavigatorProp } from 'src/domains/core/screens/BottomTabNavigator';
 
 const styles = StyleSheet.create({
@@ -79,10 +80,11 @@ export const HomeScreen: FC = () => {
           </Section>
           <Section title="Present a modal">
             <Button
+              variant="solid"
+              size="lg"
               onPress={() => {
                 navigation.navigate('ModalTutorialScreen');
-              }}
-              title="Open">
+              }}>
               Open
             </Button>
           </Section>
@@ -90,9 +92,8 @@ export const HomeScreen: FC = () => {
             <Button
               onPress={() => {
                 navigation.push('DetailTutorialScreen');
-              }}
-              title="Open">
-              Push
+              }}>
+              Open
             </Button>
           </Section>
           <Section title="See Your Changes">
