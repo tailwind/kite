@@ -34,7 +34,7 @@ export const useThemeable = <
 ): NonNullable<Flatten<ComponentConfig['baseStyle']>> => {
   const t = useTheme();
   const componentConfig = useMemo(() => _.get(t, ['components', themeKey], {}) as ComponentConfig, [t, themeKey]);
-  const parts = useMemo(() => _.get(componentConfig, ['parts'], []), [componentConfig]);
+  const parts = useMemo(() => Object.keys(componentConfig.baseStyle), [componentConfig]);
   const props = useMemo(() => ({ ..._.get(componentConfig, ['defaultProps'], {}), ...incomingProps }), [
     componentConfig,
     incomingProps,

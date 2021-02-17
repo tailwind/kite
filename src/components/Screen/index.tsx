@@ -1,12 +1,27 @@
+import { PartStyleProps } from '@emotion/react';
 import React, { FC } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, StatusBar, StatusBarStyle, View, ViewProps } from 'react-native';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StatusBar,
+  StatusBarStyle,
+  View,
+  ViewProps,
+  ViewStyle,
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ScreenThemeProps } from 'src/components/Screen/theme';
 import { useThemeable } from 'src/theme';
 
 const IS_IOS = Platform.OS === 'ios';
 
-export interface ScreenProps extends ScreenThemeProps, ViewProps {
+export type ScreenParts = {
+  outerContainer: ViewStyle;
+  innerContainer: ViewStyle;
+};
+
+export interface ScreenProps extends ViewProps, PartStyleProps<ScreenParts> {
+  variant?: 'fixed' | 'centered' | 'scrolling';
   statusBar?: StatusBarStyle;
   unsafe?: boolean;
 }

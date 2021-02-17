@@ -1,20 +1,11 @@
-import { Themeable, ThemeableProps } from '@emotion/react';
-import { ViewStyle } from 'react-native';
+import { Themeable } from '@emotion/react';
+import { ScreenParts, ScreenProps } from 'src/components/Screen';
 
-type Props = {
-  variant?: 'fixed' | 'centered' | 'scrolling';
-};
-
-type Parts = {
-  outerContainer: ViewStyle;
-  innerContainer: ViewStyle;
-};
-
-export type ScreenThemeProps = ThemeableProps<Props, Parts>;
-
-export const screenTheme: Themeable<Props, Parts> = {
-  parts: ['outerContainer', 'innerContainer'],
-  baseStyle: {},
+export const screenTheme: Themeable<ScreenProps, ScreenParts> = {
+  baseStyle: {
+    outerContainer: {},
+    innerContainer: {},
+  },
   defaultProps: {
     variant: 'scrolling',
   },

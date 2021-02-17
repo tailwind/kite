@@ -1,26 +1,7 @@
-import { Themeable, ThemeableProps } from '@emotion/react';
-import { TextStyle, ViewStyle } from 'react-native';
+import { Themeable } from '@emotion/react';
+import { ContentParts, ContentProps } from 'src/components/Content';
 
-type Props = {
-  variant?: 'solid' | 'outline' | 'ghost';
-  size?: 'md' | 'lg';
-};
-
-type Parts = {
-  row: ViewStyle;
-  center: ViewStyle;
-  top: ViewStyle;
-  bottom: ViewStyle;
-  left: ViewStyle;
-  right: ViewStyle;
-  text: TextStyle;
-  subText: TextStyle;
-};
-
-export type ContentThemeProps = ThemeableProps<Props, Parts>;
-
-export const contentTheme: Themeable<Props, Parts> = {
-  parts: ['row', 'center', 'top', 'bottom', 'left', 'right', 'text', 'subText'],
+export const contentTheme: Themeable<ContentProps, ContentParts> = {
   baseStyle: {
     row: {
       width: '100%',

@@ -1,24 +1,9 @@
-import { Themeable, ThemeableProps } from '@emotion/react';
+import { Themeable } from '@emotion/react';
 import _ from 'lodash';
-import { TextStyle, TouchableOpacityProps } from 'react-native';
+import { ButtonParts, ButtonProps } from 'src/components/Button';
 import { Theme } from 'src/theme/index';
 
-type Props = {
-  variant?: 'solid' | 'outline' | 'ghost';
-  size?: 'xs' | 'sm' | 'md' | 'lg';
-  colorScheme?: keyof Theme['colors'];
-  rounded?: 'none' | 'sm' | 'full';
-};
-
-type Parts = {
-  button: TouchableOpacityProps['style'];
-  text: TextStyle;
-};
-
-export type ButtonThemeProps = ThemeableProps<Props, Parts>;
-
-export const buttonTheme: Themeable<Props, Parts> = {
-  parts: ['button', 'text'],
+export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
   baseStyle: {
     text: {},
     button: {
@@ -35,7 +20,7 @@ export const buttonTheme: Themeable<Props, Parts> = {
   props: {
     variant: {
       solid: {
-        button: (props: Props, theme: Theme) => ({
+        button: (props: ButtonProps, theme: Theme) => ({
           backgroundColor: getColor(props, theme),
         }),
         text: {
@@ -43,16 +28,16 @@ export const buttonTheme: Themeable<Props, Parts> = {
         },
       },
       outline: {
-        button: (props: Props, theme: Theme) => ({
+        button: (props: ButtonProps, theme: Theme) => ({
           borderWidth: 2,
           borderColor: getColor(props, theme),
         }),
-        text: (props: Props, theme: Theme) => ({
+        text: (props: ButtonProps, theme: Theme) => ({
           color: getColor(props, theme),
         }),
       },
       ghost: {
-        text: (props: Props, theme: Theme) => ({
+        text: (props: ButtonProps, theme: Theme) => ({
           color: getColor(props, theme),
         }),
       },

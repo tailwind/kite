@@ -1,9 +1,19 @@
+import { PartStyleProps } from '@emotion/react';
 import React, { FC, useMemo } from 'react';
-import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
-import { ButtonThemeProps } from 'src/components/Button/theme';
-import { useThemeable } from 'src/theme';
+import { Text, TextStyle, TouchableOpacity, TouchableOpacityProps } from 'react-native';
+import { Theme, useThemeable } from 'src/theme';
 
-export interface ButtonProps extends ButtonThemeProps, TouchableOpacityProps {}
+export type ButtonParts = {
+  button: TouchableOpacityProps['style'];
+  text: TextStyle;
+};
+
+export interface ButtonProps extends TouchableOpacityProps, PartStyleProps<ButtonParts> {
+  variant?: 'solid' | 'outline' | 'ghost';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
+  colorScheme?: keyof Theme['colors'];
+  rounded?: 'none' | 'sm' | 'full';
+}
 
 export const Button: FC<ButtonProps> = ({ children, ...props }) => {
   const style = useThemeable('Button', props);

@@ -1,9 +1,22 @@
+import { PartStyleProps } from '@emotion/react';
 import React, { FC, ReactElement, ReactNode } from 'react';
-import { StyleProp, Text, TextProps, TouchableOpacityProps, View, ViewStyle } from 'react-native';
+import { StyleProp, Text, TextProps, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
 import { useThemeable } from 'src/theme';
-import { ContentThemeProps } from './theme';
 
-export interface ContentProps extends TouchableOpacityProps, ContentThemeProps {
+export type ContentParts = {
+  row: ViewStyle;
+  center: ViewStyle;
+  top: ViewStyle;
+  bottom: ViewStyle;
+  left: ViewStyle;
+  right: ViewStyle;
+  text: TextStyle;
+  subText: TextStyle;
+};
+
+export interface ContentProps extends ViewProps, PartStyleProps<ContentParts> {
+  variant?: 'solid' | 'outline' | 'ghost';
+  size?: 'md' | 'lg';
   text?: string | ReactNode;
   subText?: string | ReactNode;
   leftIcon?: string;
