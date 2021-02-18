@@ -37,8 +37,7 @@ export const useThemeable = <
 >(
   themeKey: ComponentKey,
   incomingProps: ComponentThemeProps,
-): any => {
-  // ): NonNullable<Flatten<ComponentConfig['baseStyle']>> => {
+): NonNullable<Flatten<Required<ComponentConfig['parts']>>> => {
   const t = useTheme();
   const componentConfig = useMemo(() => _.get(t, ['components', themeKey], {}) as ComponentConfig, [t, themeKey]);
   const parts = useMemo(() => Object.keys(componentConfig.baseStyle), [componentConfig]);
@@ -75,7 +74,7 @@ export const useThemeable = <
           });
 
           _.each(result[part], (value, index) => {
-            if (t.overrides[index]) {
+            if (value && t.overrides[index]) {
               if (t.overrides[index][value]) {
                 result[part][index] = t.overrides[index][value];
               } else {

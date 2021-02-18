@@ -8,6 +8,7 @@ export type TextParts = {
 };
 
 export interface TextProps extends ReactNativeTextProps, PartStyleProps<TextParts> {
+  variant?: 'body' | 'header';
   fontSize?: keyof Theme['overrides']['fontSize'];
   fontWeight?: keyof Theme['overrides']['fontWeight'];
   color?: keyof Theme['overrides']['color'];

@@ -5,6 +5,7 @@ declare module '@emotion/react' {
   export interface Theme extends MyTheme {}
 
   export type Themeable<Props, Parts> = {
+    parts?: Parts;
     baseStyle: {
       [Part in keyof Parts]: ThemeOverride<Parts[Part]> | ((props: Props, theme: Theme) => ThemeOverride<Parts[Part]>);
     };

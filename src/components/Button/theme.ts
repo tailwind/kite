@@ -53,7 +53,7 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
       },
       md: {
         button: {
-          paddingVertical: 2,
+          paddingVertical: 6,
           paddingHorizontal: 15,
         },
         text: {
@@ -62,7 +62,7 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
       },
       sm: {
         button: {
-          paddingVertical: 2,
+          paddingVertical: 4,
           paddingHorizontal: 10,
         },
         text: {
@@ -71,7 +71,7 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
       },
       xs: {
         button: {
-          paddingVertical: 2,
+          paddingVertical: 4,
           paddingHorizontal: 8,
         },
         text: {

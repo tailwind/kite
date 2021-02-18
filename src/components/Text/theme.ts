@@ -10,8 +10,22 @@ export const textTheme: Themeable<TextProps, TextParts> = {
     }),
   },
   defaultProps: {
-    fontSize: 'sm',
-    fontWeight: 'normal',
-    color: 'black',
+    variant: 'body',
+  },
+  props: {
+    variant: {
+      body: {
+        text: {
+          fontSize: 'sm',
+          fontWeight: 'normal',
+        },
+      },
+      header: {
+        text: {
+          fontSize: 'lg',
+          fontWeight: 'bold',
+        },
+      },
+    },
   },
 };
