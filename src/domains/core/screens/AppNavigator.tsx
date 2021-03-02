@@ -5,19 +5,19 @@ import { BottomTabNavigator, BottomTabNavigatorParams } from 'src/domains/core/s
 import { RootStackNavigationProp } from 'src/domains/core/screens/RootStackNavigator';
 import { DetailTutorialScreen } from 'src/domains/detailTutorial/DetailTutorialScreen';
 
-export type AppStackNavigatorParams = {
+export type AppNavigatorParams = {
   BottomTabNavigator: NavigatorScreenParams<BottomTabNavigatorParams>;
   DetailTutorialScreen: undefined;
 };
 
-const Stack = createStackNavigator<AppStackNavigatorParams>();
+const Stack = createStackNavigator<AppNavigatorParams>();
 
-export type AppStackNavigatorProp<ScreenName extends keyof AppStackNavigatorParams> = CompositeNavigationProp<
-  StackNavigationProp<AppStackNavigatorParams, ScreenName>,
-  RootStackNavigationProp<'AppStackNavigator'>
+export type AppNavigatorProp<ScreenName extends keyof AppNavigatorParams> = CompositeNavigationProp<
+  StackNavigationProp<AppNavigatorParams, ScreenName>,
+  RootStackNavigationProp<'AppNavigator'>
 >;
 
-export const AppStackNavigator: FC = () => (
+export const AppNavigator: FC = () => (
   <Stack.Navigator>
     <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} options={{ headerShown: false }} />
     <Stack.Screen name="DetailTutorialScreen" component={DetailTutorialScreen} />

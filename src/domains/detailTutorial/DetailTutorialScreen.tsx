@@ -11,7 +11,7 @@ export const DetailTutorialScreen: FC = () => (
         are a handy way to show descriptive data. Detail views make use of all of the screen real estate and will
         sometimes require a developer to hide things like tab bars. Place that screen in the{' '}
         <Text color="red.300" fontWeight="bold">
-          AppStackNavigator
+          AppNavigator
         </Text>{' '}
         and show that detail screen like a pro.
       </Text>
