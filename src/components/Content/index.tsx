@@ -62,19 +62,13 @@ export const Content: FC<ContentProps> = ({
   );
 };
 
-export interface ContentCenterProps
-  extends Pick<
-    ContentProps,
-    | 'text'
-    | 'subText'
-    | 'centerStyle'
-    | 'topStyle'
-    | 'textStyle'
-    | 'bottomStyle'
-    | 'subTextStyle'
-    | 'renderTop'
-    | 'renderBottom'
-  > {}
+export interface ContentCenterProps extends Pick<ContentProps, 'text' | 'subText' | 'renderTop' | 'renderBottom'> {
+  centerStyle: ViewStyle;
+  topStyle: ViewStyle;
+  bottomStyle: ViewStyle;
+  textStyle: TextStyle;
+  subTextStyle: TextStyle;
+}
 
 export const ContentCenter: FC<ContentCenterProps> = ({
   text,

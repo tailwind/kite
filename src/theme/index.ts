@@ -30,6 +30,7 @@ type Flatten<T> = {
 };
 type ReturnTypeIfFunc<T> = T extends (...args: any) => any ? ReturnType<T> : T;
 
+// TODO: Refactor basically this entire thing....
 export const useThemeable = <
   ComponentKey extends keyof Theme['components'],
   ComponentConfig extends Theme['components'][ComponentKey],
@@ -74,8 +75,12 @@ export const useThemeable = <
           });
 
           _.each(result[part], (value, index) => {
+            // @ts-ignore
             if (value && t.overrides[index]) {
+              // @ts-ignore
               if (t.overrides[index][value]) {
+                // @ts-ignore
+                // eslint-disable-next-line no-param-reassign
                 result[part][index] = t.overrides[index][value];
               } else {
                 throw new Error(`${themeKey}: ${index} does not support the value ${value}`);
