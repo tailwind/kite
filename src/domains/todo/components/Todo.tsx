@@ -7,19 +7,27 @@ export type TodoProps = {
   content: string;
   completed: boolean;
   onToggle: (currentValue: boolean) => void;
-  onDelete: () => void;
+  onDetails?: () => void;
+  onDelete?: () => void;
 };
 
-export const Todo: FC<TodoProps> = ({ content, completed, onToggle, onDelete }) => (
+export const Todo: FC<TodoProps> = ({ content, completed, onToggle, onDetails, onDelete }) => (
   <Content
     text={content}
     rowStyle={{ borderTopWidth: 1, borderColor: 'gray.500' }}
     renderRight={() => (
       <>
         <Checkbox value={completed} onPress={onToggle} />
-        <Button colorScheme="red" variant="outline" size="xs" onPress={onDelete}>
-          delete
-        </Button>
+        {onDetails && (
+          <Button colorScheme="blue" variant="outline" size="xs" onPress={onDetails}>
+            details
+          </Button>
+        )}
+        {onDelete && (
+          <Button colorScheme="red" variant="outline" size="xs" onPress={onDelete}>
+            delete
+          </Button>
+        )}
       </>
     )}
   />

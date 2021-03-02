@@ -1,13 +1,15 @@
-import { CompositeNavigationProp, NavigatorScreenParams } from '@react-navigation/native';
+import { CompositeNavigationProp, NavigatorScreenParams, RouteProp } from '@react-navigation/native';
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 import React, { FC } from 'react';
 import { BottomTabNavigator, BottomTabNavigatorParams } from 'src/domains/core/screens/BottomTabNavigator';
 import { ModalNavigatorProp } from 'src/domains/core/screens/ModalNavigator';
-import { DetailTutorialScreen } from 'src/domains/detailTutorial/DetailTutorialScreen';
+import { TodoDetailScreen } from 'src/domains/todo/screens/TodoDetailScreen';
 
 export type AppNavigatorParams = {
   BottomTabNavigator: NavigatorScreenParams<BottomTabNavigatorParams>;
-  DetailTutorialScreen: undefined;
+  TodoDetailScreen: {
+    todoId: string;
+  };
 };
 
 const Stack = createStackNavigator<AppNavigatorParams>();
@@ -17,9 +19,14 @@ export type AppNavigatorProp<ScreenName extends keyof AppNavigatorParams> = Comp
   ModalNavigatorProp<'AppNavigator'>
 >;
 
+export type AppNavigatorRouteProp<ScreenName extends keyof AppNavigatorParams> = RouteProp<
+  AppNavigatorParams,
+  ScreenName
+>;
+
 export const AppNavigator: FC = () => (
   <Stack.Navigator>
     <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} options={{ headerShown: false }} />
-    <Stack.Screen name="DetailTutorialScreen" component={DetailTutorialScreen} />
+    <Stack.Screen name="TodoDetailScreen" component={TodoDetailScreen} />
   </Stack.Navigator>
 );
