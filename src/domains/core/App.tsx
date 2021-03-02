@@ -4,8 +4,10 @@ import React, { FC } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { enableScreens } from 'react-native-screens';
+import { Provider as ReduxProvider } from 'react-redux';
 import { useNavigationRestore } from 'src/domains/core/hooks/useNavigationRestore';
 import { RootStackNavigator } from 'src/domains/core/screens/RootStackNavigator';
+import { store } from 'src/state';
 import { theme } from 'src/theme';
 
 enableScreens();
@@ -16,12 +18,14 @@ export const App: FC = () => {
   if (!isReady) return <ActivityIndicator />;
 
   return (
-    <SafeAreaProvider>
-      <ThemeProvider theme={theme}>
-        <NavigationContainer initialState={initialState} onStateChange={onStateChange}>
-          <RootStackNavigator />
-        </NavigationContainer>
-      </ThemeProvider>
-    </SafeAreaProvider>
+    <ReduxProvider store={store}>
+      <SafeAreaProvider>
+        <ThemeProvider theme={theme}>
+          <NavigationContainer initialState={initialState} onStateChange={onStateChange}>
+            <RootStackNavigator />
+          </NavigationContainer>
+        </ThemeProvider>
+      </SafeAreaProvider>
+    </ReduxProvider>
   );
 };
