@@ -4,19 +4,19 @@ import React, { FC } from 'react';
 import { AppNavigator, AppNavigatorParams } from 'src/domains/core/screens/AppNavigator';
 import { ModalTutorialScreen } from 'src/domains/modalTutorial/ModalTutorialScreen';
 
-export type RootStackNavigatorParams = {
+export type ModalNavigatorParams = {
   AppNavigator: NavigatorScreenParams<AppNavigatorParams>;
   ModalTutorialScreen: undefined;
 };
 
-const Stack = createStackNavigator<RootStackNavigatorParams>();
+const Stack = createStackNavigator<ModalNavigatorParams>();
 
-export type RootStackNavigationProp<ScreenName extends keyof RootStackNavigatorParams> = StackNavigationProp<
-  RootStackNavigatorParams,
+export type ModalNavigatorProp<ScreenName extends keyof ModalNavigatorParams> = StackNavigationProp<
+  ModalNavigatorParams,
   ScreenName
 >;
 
-export const RootStackNavigator: FC = () => (
+export const ModalNavigator: FC = () => (
   <Stack.Navigator mode="modal">
     <Stack.Screen name="AppNavigator" component={AppNavigator} options={{ headerShown: false }} />
     <Stack.Screen name="ModalTutorialScreen" component={ModalTutorialScreen} />

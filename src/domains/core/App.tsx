@@ -5,7 +5,7 @@ import { ActivityIndicator } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider as ReduxProvider } from 'react-redux';
 import { useNavigationRestore } from 'src/domains/core/hooks/useNavigationRestore';
-import { RootStackNavigator } from 'src/domains/core/screens/RootStackNavigator';
+import { ModalNavigator } from 'src/domains/core/screens/ModalNavigator';
 import { store } from 'src/state';
 import { theme } from 'src/theme';
 
@@ -19,7 +19,7 @@ export const App: FC = () => {
       <SafeAreaProvider>
         <ThemeProvider theme={theme}>
           <NavigationContainer initialState={initialState} onStateChange={onStateChange}>
-            <RootStackNavigator />
+            <ModalNavigator />
           </NavigationContainer>
         </ThemeProvider>
       </SafeAreaProvider>

@@ -2,7 +2,7 @@ import { CompositeNavigationProp, NavigatorScreenParams } from '@react-navigatio
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 import React, { FC } from 'react';
 import { BottomTabNavigator, BottomTabNavigatorParams } from 'src/domains/core/screens/BottomTabNavigator';
-import { RootStackNavigationProp } from 'src/domains/core/screens/RootStackNavigator';
+import { ModalNavigatorProp } from 'src/domains/core/screens/ModalNavigator';
 import { DetailTutorialScreen } from 'src/domains/detailTutorial/DetailTutorialScreen';
 
 export type AppNavigatorParams = {
@@ -14,7 +14,7 @@ const Stack = createStackNavigator<AppNavigatorParams>();
 
 export type AppNavigatorProp<ScreenName extends keyof AppNavigatorParams> = CompositeNavigationProp<
   StackNavigationProp<AppNavigatorParams, ScreenName>,
-  RootStackNavigationProp<'AppNavigator'>
+  ModalNavigatorProp<'AppNavigator'>
 >;
 
 export const AppNavigator: FC = () => (
