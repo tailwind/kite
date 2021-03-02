@@ -1,13 +1,12 @@
 import React, { FC } from 'react';
-import { Text, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { View } from 'react-native';
+import { Screen } from 'src/components/Screen';
+import { Text } from 'src/components/Text';
 
 export const ModalTutorialScreen: FC = () => (
-  <View>
-    <ScrollView contentInsetAdjustmentBehavior="automatic">
-      <View>
-        <Text>This is a modal. Use it wisely.</Text>
-      </View>
-    </ScrollView>
-  </View>
+  <Screen variant="scrolling" unsafe>
+    <View>
+      <Text>This is a modal. Use it wisely.</Text>
+    </View>
+  </Screen>
 );

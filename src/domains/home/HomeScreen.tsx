@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { FC } from 'react';
-import { Button, StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { StyleSheet, Text, useColorScheme, View } from 'react-native';
 import {
   Colors,
   DebugInstructions,
@@ -9,6 +8,8 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { Button } from 'src/components/Button';
+import { Screen } from 'src/components/Screen';
 import { BottomTabNavigatorProp } from 'src/domains/core/screens/BottomTabNavigator';
 
 const styles = StyleSheet.create({
@@ -60,51 +61,41 @@ export const HomeScreen: FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const navigation = useNavigation<BottomTabNavigatorProp<'Home'>>();
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <View style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView contentInsetAdjustmentBehavior="automatic" style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then come back to see your
-            edits.
-          </Section>
-          <Section title="Present a modal">
-            <Button
-              onPress={() => {
-                navigation.navigate('ModalTutorialScreen');
-              }}
-              title="Open">
-              Open
-            </Button>
-          </Section>
-          <Section title="Push a detail screen">
-            <Button
-              onPress={() => {
-                navigation.push('DetailTutorialScreen');
-              }}
-              title="Open">
-              Push
-            </Button>
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">Read the docs to discover what to do next:</Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </View>
+    <Screen variant="scrolling">
+      <Header />
+      <View
+        style={{
+          backgroundColor: isDarkMode ? Colors.black : Colors.white,
+        }}>
+        <Section title="Step One">
+          Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then come back to see your edits.
+        </Section>
+        <Section title="Present a modal">
+          <Button
+            onPress={() => {
+              navigation.navigate('ModalTutorialScreen');
+            }}>
+            Open
+          </Button>
+        </Section>
+        <Section title="Push a detail screen">
+          <Button
+            onPress={() => {
+              navigation.push('DetailTutorialScreen');
+            }}>
+            Open
+          </Button>
+        </Section>
+        <Section title="See Your Changes">
+          <ReloadInstructions />
+        </Section>
+        <Section title="Debug">
+          <DebugInstructions />
+        </Section>
+        <Section title="Learn More">Read the docs to discover what to do next:</Section>
+        <LearnMoreLinks />
+      </View>
+    </Screen>
   );
 };
