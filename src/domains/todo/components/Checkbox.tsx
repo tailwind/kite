@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Text } from 'react-native';
+import { Button } from 'src/components/Button';
 
 export type CheckboxProps = {
   value: boolean;
@@ -7,5 +7,7 @@ export type CheckboxProps = {
 };
 
 export const Checkbox: FC<CheckboxProps> = ({ value = false, onPress = () => {} }) => (
-  <Text onPress={() => onPress(value)}>{value ? '[x]' : '[  ]'}</Text>
+  <Button variant="ghost" size="sm" onPress={() => onPress(value)}>
+    {value ? '[x]' : '[  ]'}
+  </Button>
 );

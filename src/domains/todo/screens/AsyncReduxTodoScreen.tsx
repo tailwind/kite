@@ -1,7 +1,10 @@
 import { unwrapResult } from '@reduxjs/toolkit';
 import React, { FC, useCallback, useEffect, useState } from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
+import { TextInput } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button } from 'src/components/Button';
+import { Screen } from 'src/components/Screen';
+import { Text } from 'src/components/Text';
 import { Todo } from 'src/domains/todo/components/Todo';
 import { AppDispatch } from 'src/state';
 import { createTodo, listTodos, removeTodo, selectAllTodos, toggleTodo } from 'src/state/todoSlice';
@@ -31,8 +34,8 @@ export const AsyncReduxTodoScreen: FC = () => {
   }, [dispatch, newTodoContent]);
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>AsyncRedux</Text>
+    <Screen variant="scrolling">
+      <Text variant="header">AsyncRedux</Text>
       {todos.map(todo => (
         <Todo
           key={todo.id}
@@ -43,7 +46,9 @@ export const AsyncReduxTodoScreen: FC = () => {
         />
       ))}
       <TextInput style={{ borderWidth: 1, width: '50%' }} value={newTodoContent} onChangeText={setNewTodoContent} />
-      <Button title="Add Todo" onPress={onCreate} />
-    </View>
+      <Button colorScheme="red" onPress={onCreate}>
+        Add Todo
+      </Button>
+    </Screen>
   );
 };

@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button } from 'src/components/Button';
+import { Content } from 'src/components/Content';
 import { Checkbox } from './Checkbox';
 
 export type TodoProps = {
@@ -10,9 +11,16 @@ export type TodoProps = {
 };
 
 export const Todo: FC<TodoProps> = ({ content, completed, onToggle, onDelete }) => (
-  <View style={{ flexDirection: 'row', alignItems: 'center', borderWidth: 1 }}>
-    <Text style={{ flex: 1 }}>{content}</Text>
-    <Checkbox value={completed} onPress={onToggle} />
-    <Button title="delete" onPress={onDelete} />
-  </View>
+  <Content
+    text={content}
+    rowStyle={{ borderTopWidth: 1, borderColor: 'gray.500' }}
+    renderRight={() => (
+      <>
+        <Checkbox value={completed} onPress={onToggle} />
+        <Button colorScheme="red" variant="outline" size="xs" onPress={onDelete}>
+          delete
+        </Button>
+      </>
+    )}
+  />
 );
