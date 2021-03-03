@@ -66,6 +66,7 @@ We got a lot of value starting off from Infinite Red's [Ignite](https://github.c
     - [sliceName]Slice.ts
   - theme/
     - index.ts
+  - services/
   - @types/
 ```
 
