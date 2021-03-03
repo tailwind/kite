@@ -1,6 +1,6 @@
 import { createAsyncThunk, createEntityAdapter, createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
-import * as todoApi from 'src/services/todoApi';
-import { Todo, TodoId } from 'src/services/todoApi';
+import * as todoApi from 'src/services/todo/todo-api';
+import { Todo, TodoId } from 'src/services/todo/todo-api-types';
 import { AppState } from 'src/state';
 
 export const todoAdapter = createEntityAdapter<Todo>({});

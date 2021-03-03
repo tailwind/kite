@@ -4,7 +4,8 @@ import { Button } from 'src/components/Button';
 import { Screen } from 'src/components/Screen';
 import { Text } from 'src/components/Text';
 import { Todo } from 'src/domains/todo/components/Todo';
-import { createTodo, listTodos, Todo as TodoType } from 'src/services/todoApi';
+import { createTodo, listTodos } from 'src/services/todo/todo-api';
+import { Todo as TodoType } from 'src/services/todo/todo-api-types';
 
 export const AsyncLocalTodoScreen: FC = () => {
   const [newTodoContent, setNewTodoContent] = useState<string>('');

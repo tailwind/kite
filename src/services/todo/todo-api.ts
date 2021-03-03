@@ -1,12 +1,5 @@
 import { nanoid } from '@reduxjs/toolkit';
-
-export type TodoId = string;
-
-export type Todo = {
-  id: TodoId;
-  content: string;
-  completed: boolean;
-};
+import { Todo } from './todo-api-types';
 
 const todos: Todo[] = [
   {
@@ -16,10 +9,16 @@ const todos: Todo[] = [
   },
 ];
 
+/**
+ * Gets the list of todos
+ */
 export async function listTodos(): Promise<Todo[]> {
   return todos;
 }
 
+/**
+ * Creates a new todo item
+ */
 export async function createTodo(content: string): Promise<Todo> {
   if (content === 'Delay') {
     await new Promise(r => setTimeout(r, 2000));
