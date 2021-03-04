@@ -9,6 +9,6 @@ export interface ToastItem extends ToastProps {
 
 export type ToastOptions = {
   toast?: ToastProps;
-  addToast: (options: ToastProps) => void;
+  displayToast: (options: ToastProps) => void;
   closeToast: () => void;
 };

@@ -8,7 +8,7 @@ export const ToastProvider: FC = ({ children }) => {
   const [toast, setToast] = useState<ToastProps>();
   const DEFAULT_DURATION = 5000;
 
-  const addToast = (options: ToastProps) => {
+  const displayToast = (options: ToastProps) => {
     if (!toast) {
       LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
       setToast(options);
@@ -26,7 +26,7 @@ export const ToastProvider: FC = ({ children }) => {
   };
 
   return (
-    <ToastContext.Provider value={{ toast, addToast, closeToast }}>
+    <ToastContext.Provider value={{ toast, displayToast, closeToast }}>
       {children}
     </ToastContext.Provider>
   );

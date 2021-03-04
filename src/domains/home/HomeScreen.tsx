@@ -6,7 +6,7 @@ import { useToast } from 'src/components/Toast/useToast';
 
 export const HomeScreen: FC = () => {
 
-  const { addToast } = useToast();
+  const { displayToast } = useToast();
 
   return (
     <Screen variant="centered">
@@ -16,9 +16,9 @@ export const HomeScreen: FC = () => {
         Hello World
       </Text>
       <Button
-        onPress={() => addToast({
-          message: 'This is a toast',
-          duration: 2000
+        onPress={() => displayToast({
+          message: 'This is a toast that is a lot longer just to show off how it can hold multiple lines!',
+          duration: 10000
         })}
       >
         Show toast
