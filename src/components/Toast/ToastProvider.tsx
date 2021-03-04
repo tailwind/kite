@@ -12,12 +12,12 @@ export const ToastProvider: FC = ({ children }) => {
     setToast(options);
 
     setTimeout(() => {
-      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
       setToast(undefined);
     }, options.duration || DEFAULT_DURATION);
   };
 
   const closeToast = () => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setToast(undefined);
   };
 
