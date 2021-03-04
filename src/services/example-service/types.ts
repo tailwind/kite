@@ -1,3 +1,7 @@
+export type Example = {
+  name: string
+}
+
 export type SuccessResponse<T> = {
   wasSuccessful: true;
   statusCode: number;

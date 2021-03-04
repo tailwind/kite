@@ -4,8 +4,8 @@ import { Button } from 'src/components/Button';
 import { Screen } from 'src/components/Screen';
 import { Text } from 'src/components/Text';
 import { Todo } from 'src/domains/todo/components/Todo';
-import { createTodo, listTodos } from 'src/services/todo/todo-api';
-import { Todo as TodoType } from 'src/services/todo/todo-api-types';
+import { createTodo, listTodos } from 'src/services/todo/api';
+import { Todo as TodoType } from 'src/services/todo/types';
 
 export const AsyncLocalTodoScreen: FC = () => {
   const [newTodoContent, setNewTodoContent] = useState<string>('');
@@ -44,7 +44,7 @@ export const AsyncLocalTodoScreen: FC = () => {
     <Screen variant="scrolling">
       <Text variant="header">AsyncLocal</Text>
       {todos.map(todo => (
-        <Todo key={todo.id} content={todo.content} completed={todo.completed} onDelete={() => {}} onToggle={() => {}} />
+        <Todo key={todo.id} content={todo.content} completed={todo.completed} onDelete={() => { }} onToggle={() => { }} />
       ))}
       <TextInput style={{ borderWidth: 1, width: '50%' }} value={newTodoContent} onChangeText={setNewTodoContent} />
       <Button onPress={onCreate}>Add Todo</Button>
