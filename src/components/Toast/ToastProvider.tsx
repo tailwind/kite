@@ -1,3 +1,4 @@
+import { delay } from 'lodash';
 import React, { FC, useState } from 'react';
 import { LayoutAnimation } from 'react-native';
 import { ToastContext } from 'src/components/Toast/toastContext';
@@ -8,12 +9,15 @@ export const ToastProvider: FC = ({ children }) => {
   const DEFAULT_DURATION = 5000;
 
   const addToast = (options: ToastProps) => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    setToast(options);
+    if (!toast) {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+      setToast(options);
 
-    setTimeout(() => {
-      setToast(undefined);
-    }, options.duration || DEFAULT_DURATION);
+      delay(() => {
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+        setToast(undefined);
+      }, options.duration || DEFAULT_DURATION);
+    }
   };
 
   const closeToast = () => {

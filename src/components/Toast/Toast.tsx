@@ -41,7 +41,7 @@ export const Toast: FC<ToastProps> = ({ message }) => {
   const insets = useSafeAreaInsets();
   return (
     <View style={[styles.container, { top: insets.top }]}>
-      <Icon name="circle-check" color="white" size={24} style={{ paddingRight: 8 }} />
+      <Icon name="circle-check" color="white" size={24} style={{ paddingRight: 12 }} />
       <Text style={styles.text}>{message}</Text>
       <Button onPress={closeToast} style={styles.close}>
         <Icon name="close" color="white" size={18} />
