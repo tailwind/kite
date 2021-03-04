@@ -4,12 +4,12 @@ import React, { FC } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider as ReduxProvider } from 'react-redux';
-import { ToastProvider } from 'src/components/Toast/ToastProvider';
-import { ToastRenderer } from 'src/components/Toast/ToastRenderer';
+import { ToastProvider, ToastRenderer } from 'src/components/Toast';
 import { useNavigationRestore } from 'src/domains/core/hooks/useNavigationRestore';
 import { ModalNavigator } from 'src/domains/core/screens/ModalNavigator';
 import { store } from 'src/state';
 import { theme } from 'src/theme';
+
 
 export const App: FC = () => {
   const { isReady, initialState, onStateChange } = useNavigationRestore();

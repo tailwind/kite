@@ -1,8 +1,8 @@
 import { delay } from 'lodash';
 import React, { FC, useState } from 'react';
 import { LayoutAnimation } from 'react-native';
-import { ToastContext } from 'src/components/Toast/toastContext';
-import { ToastProps } from 'src/components/Toast/types';
+import { ToastContext, ToastProps } from 'src/components/Toast';
+
 
 export const ToastProvider: FC = ({ children }) => {
   const [toast, setToast] = useState<ToastProps>();

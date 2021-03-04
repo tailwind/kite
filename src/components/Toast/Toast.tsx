@@ -4,9 +4,9 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from 'src/components/Button';
 import { Icon } from 'src/components/Icon';
 import { Text } from 'src/components/Text';
-import { ToastProps } from 'src/components/Toast/types';
-import { useToast } from 'src/components/Toast/useToast';
+import { ToastProps, useToast } from 'src/components/Toast';
 import * as foundations from 'src/theme/foundations';
+
 
 const styles = StyleSheet.create({
   container: {

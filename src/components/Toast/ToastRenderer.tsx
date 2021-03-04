@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { Toast } from 'src/components/Toast';
-import { useToast } from 'src/components/Toast/useToast';
+import { Toast, useToast } from 'src/components/Toast';
+
 
 export const ToastRenderer: FC = () => {
   const { toast } = useToast();

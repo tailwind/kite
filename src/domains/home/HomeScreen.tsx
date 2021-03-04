@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Button } from 'src/components/Button';
 import { Screen } from 'src/components/Screen';
 import { Text } from 'src/components/Text';
-import { useToast } from 'src/components/Toast/useToast';
+import { useToast } from 'src/components/Toast';
 
 export const HomeScreen: FC = () => {
 
