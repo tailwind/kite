@@ -5,7 +5,7 @@ import {
   Response,
   ResponsePromise,
   SuccessResponse
-} from 'src/services/example-service/types';
+} from 'src/services/exampleService/types';
 
 const MAX_RETRY_ATTEMPTS = 3;
 
