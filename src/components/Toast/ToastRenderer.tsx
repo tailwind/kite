@@ -1,9 +1,9 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import { Toast } from 'src/components/Toast';
-import { ToastContext } from 'src/components/Toast/toastContext';
+import { useToast } from 'src/components/Toast/useToast';
 
 export const ToastRenderer: FC = () => {
-  const { toast } = useContext(ToastContext);
+  const { toast } = useToast();
 
   if (toast) {
     return <Toast {...toast} />;

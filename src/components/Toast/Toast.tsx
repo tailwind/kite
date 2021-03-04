@@ -1,11 +1,11 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from 'src/components/Button';
 import { Icon } from 'src/components/Icon';
 import { Text } from 'src/components/Text';
-import { ToastContext } from 'src/components/Toast/toastContext';
-import { ToastProps } from 'src/components/Toast/toastTypes';
+import { ToastProps } from 'src/components/Toast/types';
+import { useToast } from 'src/components/Toast/useToast';
 import * as foundations from 'src/theme/foundations';
 
 const styles = StyleSheet.create({
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 });
 
 export const Toast: FC<ToastProps> = ({ message }) => {
-  const { closeToast } = useContext(ToastContext);
+  const { closeToast } = useToast();
   const insets = useSafeAreaInsets();
   return (
     <View style={[styles.container, { top: insets.top }]}>

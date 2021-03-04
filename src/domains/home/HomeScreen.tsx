@@ -1,12 +1,12 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import { Button } from 'src/components/Button';
 import { Screen } from 'src/components/Screen';
 import { Text } from 'src/components/Text';
-import { ToastContext } from 'src/components/Toast/toastContext';
+import { useToast } from 'src/components/Toast/useToast';
 
 export const HomeScreen: FC = () => {
 
-  const { displayToast } = useContext(ToastContext);
+  const { addToast } = useToast();
 
   return (
     <Screen variant="centered">
@@ -16,7 +16,7 @@ export const HomeScreen: FC = () => {
         Hello World
       </Text>
       <Button
-        onPress={() => displayToast({
+        onPress={() => addToast({
           message: 'This is a toast',
           duration: 5000
         })}

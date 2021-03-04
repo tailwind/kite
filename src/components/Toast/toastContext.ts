@@ -1,7 +1,7 @@
 import { createContext } from 'react';
-import { ToastContextProps } from 'src/components/Toast/toastTypes';
+import { ToastOptions } from 'src/components/Toast/types';
 
-export const ToastContext = createContext<ToastContextProps>({
-   displayToast: () => { },
+export const ToastContext = createContext<ToastOptions>({
+   addToast: () => { },
    closeToast: () => { }
 });
