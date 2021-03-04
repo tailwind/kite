@@ -1,12 +1,5 @@
 import { nanoid } from '@reduxjs/toolkit';
-
-export type TodoId = string;
-
-export type Todo = {
-  id: TodoId;
-  content: string;
-  completed: boolean;
-};
+import { Todo } from 'src/services/todo';
 
 const todos: Todo[] = [
   {
