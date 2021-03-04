@@ -4,6 +4,8 @@ import React, { FC } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider as ReduxProvider } from 'react-redux';
+import { ToastProvider } from 'src/components/Toast/ToastProvider';
+import { ToastRenderer } from 'src/components/Toast/ToastRenderer';
 import { useNavigationRestore } from 'src/domains/core/hooks/useNavigationRestore';
 import { ModalNavigator } from 'src/domains/core/screens/ModalNavigator';
 import { store } from 'src/state';
@@ -15,14 +17,17 @@ export const App: FC = () => {
   if (!isReady) return <ActivityIndicator />;
 
   return (
-    <ReduxProvider store={store}>
-      <SafeAreaProvider>
-        <ThemeProvider theme={theme}>
-          <NavigationContainer initialState={initialState} onStateChange={onStateChange}>
-            <ModalNavigator />
-          </NavigationContainer>
-        </ThemeProvider>
-      </SafeAreaProvider>
-    </ReduxProvider>
+    <ToastProvider>
+      <ReduxProvider store={store}>
+        <SafeAreaProvider>
+          <ThemeProvider theme={theme}>
+            <NavigationContainer initialState={initialState} onStateChange={onStateChange}>
+              <ModalNavigator />
+              <ToastRenderer />
+            </NavigationContainer>
+          </ThemeProvider>
+        </SafeAreaProvider>
+      </ReduxProvider>
+    </ToastProvider>
   );
 };
