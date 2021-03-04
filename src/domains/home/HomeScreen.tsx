@@ -17,8 +17,8 @@ export const HomeScreen: FC = () => {
       </Text>
       <Button
         onPress={() => displayToast({
-          message: 'This is a toast that is a lot longer just to show off how it can hold multiple lines!',
-          duration: 10000
+          message: 'This is a toast',
+          duration: 3000
         })}
       >
         Show toast
