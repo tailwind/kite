@@ -1,5 +1,5 @@
 import { nanoid } from '@reduxjs/toolkit';
-import { Todo } from './types';
+import { Todo } from 'src/services/todo';
 
 const todos: Todo[] = [
   {
