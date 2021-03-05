@@ -14,7 +14,7 @@ import * as Yup from 'yup';
 
 const VALIDATION_SCHEMA = Yup.object({
   email: Yup.string().email('Email is invalid').required('Email is required'),
-  password: Yup.string().max(255, 'Password too long').required('Password is required'),
+  password: Yup.string().required('Password is required'),
 });
 
 export const ERROR_CONTAINER: ViewStyle = {
