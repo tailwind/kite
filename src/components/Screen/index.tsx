@@ -22,6 +22,7 @@ export type ScreenParts = {
 
 export interface ScreenProps extends ViewProps, PartStyleProps<ScreenParts> {
   variant?: 'fixed' | 'centered' | 'scrolling';
+  padding?: 'none' | 'sm' | 'lg';
   statusBar?: StatusBarStyle;
   unsafe?: boolean;
 }
@@ -58,7 +59,10 @@ const ScreenWithScrolling: FC<ScreenProps> = ({ statusBar = 'default', unsafe = 
     <KeyboardAvoidingView style={style.outerContainer} behavior={IS_IOS ? 'padding' : undefined}>
       <StatusBar barStyle={statusBar} />
       <View style={[style.outerContainer, insetStyle]}>
-        <ScrollView style={style.outerContainer} contentContainerStyle={style.innerContainer}>
+        <ScrollView
+          style={style.outerContainer}
+          contentContainerStyle={style.innerContainer}
+          keyboardShouldPersistTaps="handled">
           {children}
         </ScrollView>
       </View>

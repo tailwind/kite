@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { useMemo } from 'react';
 import { buttonTheme } from 'src/components/Button/theme';
 import { contentTheme } from 'src/components/Content/theme';
+import { inputTheme } from 'src/components/Input/theme';
 import { screenTheme } from 'src/components/Screen/theme';
 import { textTheme } from 'src/components/Text/theme';
 import * as foundations from './foundations';
@@ -12,11 +13,14 @@ export const theme = {
     backgroundColor: foundations.colors,
     color: foundations.colors,
     borderColor: foundations.colors,
+    borderBottomColor: foundations.colors,
     fontWeight: foundations.fontWeights,
     fontSize: foundations.fontSizes,
+    borderRadius: foundations.borderRadii,
   },
   components: {
     Button: buttonTheme,
+    Input: inputTheme,
     Content: contentTheme,
     Screen: screenTheme,
     Text: textTheme,
@@ -78,7 +82,7 @@ export const useThemeable = <
             // @ts-ignore
             if (value && t.overrides[index]) {
               // @ts-ignore
-              if (t.overrides[index][value]) {
+              if (t.overrides[index][value] !== undefined) {
                 // @ts-ignore
                 // eslint-disable-next-line no-param-reassign
                 result[part][index] = t.overrides[index][value];
