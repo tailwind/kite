@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import * as exampleService from 'src/services/exampleService';
 import { User } from 'src/services/exampleService';
 
@@ -40,7 +40,11 @@ export const authSlice = createSlice({
     authState: AuthState.Pending,
     user: null,
   } as AuthSliceState,
-  reducers: {},
+  reducers: {
+    setAuthState(state, { payload }: PayloadAction<AuthState>) {
+      state.authState = payload;
+    },
+  },
   extraReducers: builder => {
     builder.addCase(refreshAuth.fulfilled, (state, { payload }) => {
       state.authState = AuthState.Authorized;
@@ -61,6 +65,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const {} = authSlice.actions;
+export const { setAuthState } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;
