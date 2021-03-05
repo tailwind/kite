@@ -1,28 +1,38 @@
 import { ThemeProvider } from '@emotion/react';
 import { NavigationContainer } from '@react-navigation/native';
-import React, { FC } from 'react';
-import { ActivityIndicator } from 'react-native';
+import React, { FC, useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Provider as ReduxProvider } from 'react-redux';
+import { Provider as ReduxProvider, useDispatch } from 'react-redux';
 import { useNavigationRestore } from 'src/domains/core/hooks/useNavigationRestore';
 import { ModalNavigator } from 'src/domains/core/screens/ModalNavigator';
-import { store } from 'src/state';
+import { SplashScreen } from 'src/domains/core/screens/SplashScreen';
+import { AppDispatch, store } from 'src/state';
+import { refreshAuth } from 'src/state/authSlice';
 import { theme } from 'src/theme';
 
-export const App: FC = () => {
+export const App: FC = () => (
+  <ReduxProvider store={store}>
+    <SafeAreaProvider>
+      <ThemeProvider theme={theme}>
+        <AppContainer />
+      </ThemeProvider>
+    </SafeAreaProvider>
+  </ReduxProvider>
+);
+
+const AppContainer: FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const { isReady, initialState, onStateChange } = useNavigationRestore();
 
-  if (!isReady) return <ActivityIndicator />;
+  useEffect(() => {
+    dispatch(refreshAuth());
+  }, [dispatch]);
 
-  return (
-    <ReduxProvider store={store}>
-      <SafeAreaProvider>
-        <ThemeProvider theme={theme}>
-          <NavigationContainer initialState={initialState} onStateChange={onStateChange}>
-            <ModalNavigator />
-          </NavigationContainer>
-        </ThemeProvider>
-      </SafeAreaProvider>
-    </ReduxProvider>
+  return isReady ? (
+    <NavigationContainer initialState={initialState} onStateChange={onStateChange}>
+      <ModalNavigator />
+    </NavigationContainer>
+  ) : (
+    <SplashScreen />
   );
 };

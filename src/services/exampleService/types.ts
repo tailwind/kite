@@ -1,6 +1,14 @@
 export type Example = {
-  name: string
-}
+  name: string;
+};
+
+export type UserId = string;
+
+export type User = {
+  id: UserId;
+  name: string;
+  email: string;
+};
 
 export type SuccessResponse<T> = {
   wasSuccessful: true;
