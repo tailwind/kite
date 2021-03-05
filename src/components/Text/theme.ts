@@ -10,7 +10,8 @@ export const textTheme: Themeable<TextProps, TextParts> = {
     }),
   },
   defaultProps: {
-    variant: 'body',
+    // TODO: Something going wrong here
+    // variant: 'body',
   },
   props: {
     variant: {
