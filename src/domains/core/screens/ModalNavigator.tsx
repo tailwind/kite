@@ -24,8 +24,8 @@ export type ModalNavigatorRouteProp<ScreenName extends keyof ModalNavigatorParam
 >;
 
 export const ModalNavigator: FC = () => (
-  <Stack.Navigator mode="modal">
-    <Stack.Screen name="AppNavigator" component={AppNavigator} options={{ headerShown: false }} />
-    <Stack.Screen name="TodoModalScreen" component={TodoModalScreen} />
+  <Stack.Navigator mode="modal" initialRouteName="AppNavigator" screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="AppNavigator" component={AppNavigator} />
+    <Stack.Screen name="TodoModalScreen" component={TodoModalScreen} options={{ headerShown: true }} />
   </Stack.Navigator>
 );

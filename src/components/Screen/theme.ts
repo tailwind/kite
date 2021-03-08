@@ -3,11 +3,14 @@ import { ScreenParts, ScreenProps } from 'src/components/Screen';
 
 export const screenTheme: Themeable<ScreenProps, ScreenParts> = {
   baseStyle: {
-    outerContainer: {},
+    outerContainer: {
+      backgroundColor: 'white',
+    },
     innerContainer: {},
   },
   defaultProps: {
     variant: 'scrolling',
+    padding: 'none',
   },
   props: {
     variant: {
@@ -31,6 +34,7 @@ export const screenTheme: Themeable<ScreenProps, ScreenParts> = {
         innerContainer: {
           flexGrow: 1,
           justifyContent: 'center',
+          alignItems: 'center',
         },
       },
       scrolling: {
@@ -41,6 +45,18 @@ export const screenTheme: Themeable<ScreenProps, ScreenParts> = {
         innerContainer: {
           justifyContent: 'flex-start',
           alignItems: 'stretch',
+        },
+      },
+    },
+    padding: {
+      sm: {
+        innerContainer: {
+          padding: 8,
+        },
+      },
+      lg: {
+        innerContainer: {
+          padding: 16,
         },
       },
     },

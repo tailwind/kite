@@ -3,23 +3,25 @@ import { ButtonParts, ButtonProps } from 'src/components/Button';
 
 export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
   baseStyle: {
-    text: {},
-    button: {
+    text: props => ({
+      opacity: props.loading ? 0 : 1,
+    }),
+    button: props => ({
+      borderRadius: props.rounded,
       alignItems: 'center',
       justifyContent: 'center',
-      margin: 5,
-    },
+    }),
   },
   defaultProps: {
     variant: 'solid',
-    colorScheme: 'blue',
+    colorScheme: 'purple',
     size: 'md',
     rounded: 'full',
   },
   props: {
     variant: {
       solid: {
-        button: (props: ButtonProps) => ({
+        button: props => ({
           backgroundColor: props.colorScheme,
         }),
         text: {
@@ -27,16 +29,16 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
         },
       },
       outline: {
-        button: (props: ButtonProps) => ({
+        button: props => ({
           borderWidth: 2,
           borderColor: props.colorScheme,
         }),
-        text: (props: ButtonProps) => ({
+        text: props => ({
           color: props.colorScheme,
         }),
       },
       ghost: {
-        text: (props: ButtonProps) => ({
+        text: props => ({
           color: props.colorScheme,
         }),
       },
@@ -44,8 +46,8 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
     size: {
       lg: {
         button: {
-          paddingVertical: 4,
-          paddingHorizontal: 20,
+          paddingVertical: 12,
+          paddingHorizontal: 14,
         },
         text: {
           fontSize: 'lg',
@@ -53,8 +55,8 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
       },
       md: {
         button: {
-          paddingVertical: 6,
-          paddingHorizontal: 15,
+          paddingVertical: 10,
+          paddingHorizontal: 10,
         },
         text: {
           fontSize: 'md',
@@ -62,7 +64,7 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
       },
       sm: {
         button: {
-          paddingVertical: 4,
+          paddingVertical: 10,
           paddingHorizontal: 10,
         },
         text: {
@@ -71,23 +73,11 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
       },
       xs: {
         button: {
-          paddingVertical: 4,
-          paddingHorizontal: 8,
+          paddingVertical: 2,
+          paddingHorizontal: 6,
         },
         text: {
           fontSize: 'xs',
-        },
-      },
-    },
-    rounded: {
-      full: {
-        button: {
-          borderRadius: 100,
-        },
-      },
-      sm: {
-        button: {
-          borderRadius: 4,
         },
       },
     },
