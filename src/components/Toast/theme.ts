@@ -8,7 +8,7 @@ export const toastTheme: Themeable<ToastProps, ToastParts> = {
       paddingVertical: 12,
       paddingLeft: 12,
       paddingRight: 65,
-      borderRadius: 8,
+      borderRadius: 'md',
       flex: 1,
       flexDirection: 'row',
       position: 'absolute',
