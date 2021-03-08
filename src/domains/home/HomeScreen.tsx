@@ -4,14 +4,20 @@ import { useDispatch } from 'react-redux';
 import { Button } from 'src/components/Button';
 import { Screen } from 'src/components/Screen';
 import { Text } from 'src/components/Text';
+import { useToast } from 'src/components/Toast';
 import { AppDispatch } from 'src/state';
 import { logout } from 'src/state/authSlice';
 
 export const HomeScreen: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const onPressLogout = useCallback(() => {
-    dispatch(logout());
-  }, [dispatch]);
+  const { displayToast } = useToast();
+  const onPressLogout = useCallback(async () => {
+    await dispatch(logout());
+    displayToast({
+      message: "Successfully logged out",
+      duration: 3000
+    });
+  }, [dispatch, displayToast]);
 
   return (
     <Screen variant="scrolling" padding="lg">
