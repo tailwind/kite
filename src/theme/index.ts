@@ -5,6 +5,7 @@ import { buttonTheme } from 'src/components/Button/theme';
 import { contentTheme } from 'src/components/Content/theme';
 import { screenTheme } from 'src/components/Screen/theme';
 import { textTheme } from 'src/components/Text/theme';
+import { toastTheme } from 'src/components/Toast/theme';
 import * as foundations from './foundations';
 
 export const theme = {
@@ -16,6 +17,7 @@ export const theme = {
     fontSize: foundations.fontSizes,
   },
   components: {
+    Toast: toastTheme,
     Button: buttonTheme,
     Content: contentTheme,
     Screen: screenTheme,

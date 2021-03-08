@@ -1,47 +1,31 @@
+import { PartStyleProps } from '@emotion/react';
 import React, { FC } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Text, TextStyle, View, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from 'src/components/Button';
 import { Icon } from 'src/components/Icon';
-import { Text } from 'src/components/Text';
-import { ToastProps, useToast } from 'src/components/Toast';
-import * as foundations from 'src/theme/foundations';
+import { useToast } from 'src/components/Toast';
+import { Theme, useThemeable } from 'src/theme';
 
+export type ToastParts = {
+  toast: ViewStyle;
+  text: TextStyle;
+  icon: ViewStyle;
+  close: ViewStyle;
+};
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: foundations.colors.purple,
-    paddingVertical: 12,
-    paddingLeft: 12,
-    paddingRight: 65,
-    borderRadius: 8,
-    flex: 1,
-    flexDirection: 'row',
-    position: 'absolute',
-    zIndex: 1,
-    width: '95%',
-    alignSelf: 'center',
-    alignItems: 'center'
-  },
-  text: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 18,
-  },
-  close: {
-    position: 'absolute',
-    top: 5,
-    right: 5,
-    fontWeight: 'bold',
-  },
-});
+export interface ToastProps extends PartStyleProps<ToastParts> {
+  message: string;
+  colorScheme?: keyof Theme['overrides']['color'];
+};
 
-export const Toast: FC<ToastProps> = ({ message }) => {
+export const Toast: FC<ToastProps> = ({ message, ...props }) => {
   const { closeToast } = useToast();
+  const styles = useThemeable('Toast', props);
   const insets = useSafeAreaInsets();
   return (
-    <View style={[styles.container, { top: insets.top }]}>
-      <Icon name="circle-check" color="white" size={24} style={{ paddingRight: 12 }} />
+    <View style={[styles.toast, { top: insets.top }]}>
+      <Icon name="circle-check" color="white" size={24} style={styles.icon} />
       <Text style={styles.text}>{message}</Text>
       <Button onPress={closeToast} style={styles.close}>
         <Icon name="close" color="white" size={18} />
