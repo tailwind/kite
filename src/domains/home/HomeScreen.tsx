@@ -11,9 +11,13 @@ import { logout } from 'src/state/authSlice';
 export const HomeScreen: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { displayToast } = useToast();
-  const onPressLogout = useCallback(() => {
-    dispatch(logout());
-  }, [dispatch]);
+  const onPressLogout = useCallback(async () => {
+    await dispatch(logout());
+    displayToast({
+      message: "Successfully logged out",
+      duration: 3000
+    });
+  }, [dispatch, displayToast]);
 
   return (
     <Screen variant="scrolling" padding="lg">
@@ -22,14 +26,6 @@ export const HomeScreen: FC = () => {
           Home
         </Text>
         <View style={{ flex: 1 }} />
-        <Button
-          onPress={() => displayToast({
-            message: 'This is a toast',
-            duration: 3000
-          })}
-        >
-          Show toast
-      </Button>
         <Button onPress={onPressLogout} size="sm" colorScheme="red" rounded="sm">
           Log Out
         </Button>
