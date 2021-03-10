@@ -30,6 +30,9 @@ export const HomeScreen: FC = () => {
           Log Out
         </Button>
       </View>
-    </Screen>
+      <Button>
+        Send notification
+      </Button>
+    </Screen >
   );
 };

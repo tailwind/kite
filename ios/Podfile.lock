@@ -280,8 +280,6 @@ PODS:
     - React-jsi (= 0.64.0-rc.3)
     - React-perflogger (= 0.64.0-rc.3)
   - React-jsinspector (0.64.0-rc.3)
-  - react-native-notifications (3.4.2):
-    - React-Core
   - react-native-safe-area-context (3.2.0):
     - React-Core
   - React-perflogger (0.64.0-rc.3)
@@ -416,7 +414,6 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
-  - react-native-notifications (from `../node_modules/react-native-notifications/react-native-notifications.podspec`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -492,8 +489,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
-  react-native-notifications:
-    :podspec: "../node_modules/react-native-notifications/react-native-notifications.podspec"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   React-perflogger:
@@ -569,7 +564,6 @@ SPEC CHECKSUMS:
   React-jsi: 0c862d1821e1a6d671a85945b99bee28bc3f7020
   React-jsiexecutor: 3d27b79050df18a753001d77cbf07b960dc4a8d6
   React-jsinspector: 09567a7aa3dcb281caf25eeba87280b1ea3e09f4
-  react-native-notifications: e914ff49de3b2268cfa1b5e2ad21fd27c36d5b7b
   react-native-safe-area-context: e471852c5ed67eea4b10c5d9d43c1cebae3b231d
   React-perflogger: d9815e398aa6e6016b8c0bef8b3033ab818f823d
   React-RCTActionSheet: 1ec7b3130b7878d5f818c105eeda38d25f1ebab1
@@ -596,6 +590,6 @@ SPEC CHECKSUMS:
   Yoga: 31313df467e58b5b53f26a0319fa100159c79fa3
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: ab18e6c3eb77ede1145354d17fd32a1da2d1346f
+PODFILE CHECKSUM: 52ec121e930057bac4accb6a0a6b9dfbd09bed27
 
 COCOAPODS: 1.10.1
