@@ -1,5 +1,6 @@
 import React, { FC, useCallback } from 'react';
 import { View } from 'react-native';
+import PushNotification from "react-native-push-notification";
 import { useDispatch } from 'react-redux';
 import { Button } from 'src/components/Button';
 import { Screen } from 'src/components/Screen';
@@ -30,7 +31,7 @@ export const HomeScreen: FC = () => {
           Log Out
         </Button>
       </View>
-      <Button>
+      <Button onPress={() => PushNotification.localNotification({ message: "Test" })}>
         Send notification
       </Button>
     </Screen >

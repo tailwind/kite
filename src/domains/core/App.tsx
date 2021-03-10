@@ -7,7 +7,6 @@ import { ToastProvider, ToastRenderer } from 'src/components/Toast';
 import { useNavigationRestore } from 'src/domains/core/hooks/useNavigationRestore';
 import { ModalNavigator } from 'src/domains/core/screens/ModalNavigator';
 import { SplashScreen } from 'src/domains/core/screens/SplashScreen';
-import { registerNotifications } from 'src/services/notificationService';
 import { AppDispatch, store } from 'src/state';
 import { refreshAuth } from 'src/state/authSlice';
 import { theme } from 'src/theme';
@@ -31,10 +30,6 @@ const AppContainer: FC = () => {
   useEffect(() => {
     dispatch(refreshAuth());
   }, [dispatch]);
-
-  useEffect(() => {
-    registerNotifications();
-  }, []);
 
   return isReady ? (
     <NavigationContainer initialState={initialState} onStateChange={onStateChange}>
