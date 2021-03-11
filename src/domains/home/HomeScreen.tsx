@@ -1,4 +1,3 @@
-import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import React, { FC, useCallback } from 'react';
 import { View } from 'react-native';
 import { useDispatch } from 'react-redux';
@@ -6,6 +5,7 @@ import { Button } from 'src/components/Button';
 import { Screen } from 'src/components/Screen';
 import { Text } from 'src/components/Text';
 import { useToast } from 'src/components/Toast';
+import { sendNotification } from 'src/services/notificationService';
 import { AppDispatch } from 'src/state';
 import { logout } from 'src/state/authSlice';
 
@@ -24,10 +24,9 @@ const NotificationSection: FC = () => (
       <Button
         size="sm"
         rounded="sm"
-        onPress={() => PushNotificationIOS.addNotificationRequest({
-          title: 'Demo notification',
-          body: '0 second delay',
-          id: '0s-delay'
+        onPress={() => sendNotification({
+          title: "Demo Notification",
+          message: '0 second delay'
         })}
       >
         0s Delay
@@ -35,11 +34,10 @@ const NotificationSection: FC = () => (
       <Button
         size="sm"
         rounded="sm"
-        onPress={() => PushNotificationIOS.addNotificationRequest({
-          title: 'Demo notification',
-          body: '3 second delay',
-          id: '3s-delay',
-          fireDate: new Date(Date.now() + 3000)
+        onPress={() => sendNotification({
+          title: "Demo Notification",
+          message: '3 second delay',
+          date: new Date(Date.now() + 3000)
         })}
       >
         3s Delay
@@ -47,11 +45,10 @@ const NotificationSection: FC = () => (
       <Button
         size="sm"
         rounded="sm"
-        onPress={() => PushNotificationIOS.addNotificationRequest({
-          title: 'Demo notification',
-          body: '5 second delay',
-          id: '5s-delay',
-          fireDate: new Date(Date.now() + 5000)
+        onPress={() => sendNotification({
+          title: "Demo Notification",
+          message: '5 second delay',
+          date: new Date(Date.now() + 5000)
         })}
       >
         5s Delay
