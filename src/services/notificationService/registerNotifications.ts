@@ -2,7 +2,6 @@ import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import PushNotification from 'react-native-push-notification';
 
 export const registerNotifications = () => {
-  // Registering local notifications
   PushNotification.configure({
     onRegister(token) {
       console.log('TOKEN:', token);
@@ -19,6 +18,7 @@ export const registerNotifications = () => {
     },
 
     onRegistrationError(err) {
+      // Hides error when trying to register notifications in simulator
       if (err.code !== 3010) {
         console.error(err.message, err);
       }
