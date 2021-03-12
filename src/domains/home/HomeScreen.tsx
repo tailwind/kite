@@ -5,8 +5,57 @@ import { Button } from 'src/components/Button';
 import { Screen } from 'src/components/Screen';
 import { Text } from 'src/components/Text';
 import { useToast } from 'src/components/Toast';
+import { sendNotification } from 'src/services/notificationService';
 import { AppDispatch } from 'src/state';
 import { logout } from 'src/state/authSlice';
+
+const NotificationSection: FC = () => (
+  <>
+    <View style={{ marginBottom: 5 }}>
+      <Text fontSize="md">Notifications</Text>
+    </View>
+    <View style={{
+      width: 260,
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between'
+    }}>
+      <Button
+        size="sm"
+        rounded="sm"
+        onPress={() => sendNotification({
+          title: "Demo Notification",
+          message: '0 second delay'
+        })}
+      >
+        0s Delay
+      </Button>
+      <Button
+        size="sm"
+        rounded="sm"
+        onPress={() => sendNotification({
+          title: "Demo Notification",
+          message: '3 second delay',
+          date: new Date(Date.now() + 3000)
+        })}
+      >
+        3s Delay
+      </Button>
+      <Button
+        size="sm"
+        rounded="sm"
+        onPress={() => sendNotification({
+          title: "Demo Notification",
+          message: '5 second delay',
+          date: new Date(Date.now() + 5000)
+        })}
+      >
+        5s Delay
+      </Button>
+    </View>
+  </>
+);
 
 export const HomeScreen: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -30,6 +79,7 @@ export const HomeScreen: FC = () => {
           Log Out
         </Button>
       </View>
+      <NotificationSection />
     </Screen>
   );
 };
