@@ -6,6 +6,7 @@ import { contentTheme } from 'src/components/Content/theme';
 import { inputTheme } from 'src/components/Input/theme';
 import { screenTheme } from 'src/components/Screen/theme';
 import { textTheme } from 'src/components/Text/theme';
+import { toastTheme } from 'src/components/Toast/theme';
 import * as foundations from './foundations';
 
 export const theme = {
@@ -19,6 +20,7 @@ export const theme = {
     borderRadius: foundations.borderRadii,
   },
   components: {
+    Toast: toastTheme,
     Button: buttonTheme,
     Input: inputTheme,
     Content: contentTheme,

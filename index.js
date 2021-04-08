@@ -6,6 +6,11 @@ import { enableScreens } from 'react-native-screens';
 import { name as appName } from './app.json';
 import { config } from './src/config';
 import { App } from './src/domains/core/App';
+import { registerNotifications } from './src/services/notificationService/registerNotifications';
+
+// Required to be outside of a component for notification handlers to work.
+// See https://github.com/zo0r/react-native-push-notification#usage
+registerNotifications();
 
 // This caused issues for us on Triforce, but it may not here
 // https://github.com/facebook/react-native/issues/27552

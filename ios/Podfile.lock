@@ -60,6 +60,15 @@ PODS:
   - glog (0.3.5)
   - hermes-engine (0.7.2)
   - libevent (2.1.11)
+  - libwebp (1.2.0):
+    - libwebp/demux (= 1.2.0)
+    - libwebp/mux (= 1.2.0)
+    - libwebp/webp (= 1.2.0)
+  - libwebp/demux (1.2.0):
+    - libwebp/webp
+  - libwebp/mux (1.2.0):
+    - libwebp/demux
+  - libwebp/webp (1.2.0)
   - OpenSSL-Universal (1.0.2.20):
     - OpenSSL-Universal/Static (= 1.0.2.20)
   - OpenSSL-Universal/Static (1.0.2.20)
@@ -271,7 +280,7 @@ PODS:
     - React-jsi (= 0.64.0-rc.3)
     - React-perflogger (= 0.64.0-rc.3)
   - React-jsinspector (0.64.0-rc.3)
-  - react-native-safe-area-context (3.1.9):
+  - react-native-safe-area-context (3.2.0):
     - React-Core
   - React-perflogger (0.64.0-rc.3)
   - React-RCTActionSheet (0.64.0-rc.3):
@@ -337,16 +346,32 @@ PODS:
     - React-cxxreact (= 0.64.0-rc.3)
     - React-jsi (= 0.64.0-rc.3)
     - React-perflogger (= 0.64.0-rc.3)
-  - RNCAsyncStorage (1.13.4):
+  - RNCAsyncStorage (1.14.1):
     - React-Core
   - RNCMaskedView (0.1.10):
     - React
-  - RNGestureHandler (1.10.1):
+  - RNCPushNotificationIOS (1.8.0):
+    - React-Core
+  - RNFastImage (8.3.4):
+    - React-Core
+    - SDWebImage (~> 5.8)
+    - SDWebImageWebPCoder (~> 0.6.1)
+  - RNGestureHandler (1.10.3):
     - React-Core
   - RNReanimated (1.13.2):
     - React-Core
-  - RNScreens (2.17.1):
+  - RNScreens (2.18.1):
     - React-Core
+  - RNSVG (12.1.0):
+    - React
+  - RNVectorIcons (8.1.0):
+    - React-Core
+  - SDWebImage (5.10.4):
+    - SDWebImage/Core (= 5.10.4)
+  - SDWebImage/Core (5.10.4)
+  - SDWebImageWebPCoder (0.6.1):
+    - libwebp (~> 1.0)
+    - SDWebImage/Core (~> 5.7)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -406,9 +431,13 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
+  - "RNCPushNotificationIOS (from `../node_modules/@react-native-community/push-notification-ios`)"
+  - RNFastImage (from `../node_modules/react-native-fast-image`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNSVG (from `../node_modules/react-native-svg`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -424,7 +453,10 @@ SPEC REPOS:
     - Flipper-RSocket
     - FlipperKit
     - hermes-engine
+    - libwebp
     - OpenSSL-Universal
+    - SDWebImage
+    - SDWebImageWebPCoder
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -490,12 +522,20 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNCMaskedView:
     :path: "../node_modules/@react-native-community/masked-view"
+  RNCPushNotificationIOS:
+    :path: "../node_modules/@react-native-community/push-notification-ios"
+  RNFastImage:
+    :path: "../node_modules/react-native-fast-image"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -505,7 +545,7 @@ SPEC CHECKSUMS:
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: 9cafb8520d334de0720e1119b41db4cc16d3fbc9
-  FBReactNativeSpec: 1d59b8f9ab9e50902955fe4771c18aab739263fc
+  FBReactNativeSpec: d6a6eb9c706b45dbfb5e3c0396200723baf7a5ed
   Flipper: be611d4b742d8c87fbae2ca5f44603a02539e365
   Flipper-DoubleConversion: 38631e41ef4f9b12861c67d17cb5518d06badc41
   Flipper-Folly: e4493b013c02d9347d5e0cb4d128680239f6c78a
@@ -516,6 +556,7 @@ SPEC CHECKSUMS:
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
   hermes-engine: 7d97ba46a1e29bacf3e3c61ecb2804a5ddd02d4f
   libevent: 867cc03e654415675bcacf9726871a37c4b56b8a
+  libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
   OpenSSL-Universal: ff34003318d5e1163e9529b08470708e389ffcdd
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: cff6c2b6d032642cc892d3516bca5da0dfe86f38
@@ -528,7 +569,7 @@ SPEC CHECKSUMS:
   React-jsi: 0c862d1821e1a6d671a85945b99bee28bc3f7020
   React-jsiexecutor: 3d27b79050df18a753001d77cbf07b960dc4a8d6
   React-jsinspector: 09567a7aa3dcb281caf25eeba87280b1ea3e09f4
-  react-native-safe-area-context: 86612d2c9a9e94e288319262d10b5f93f0b395f5
+  react-native-safe-area-context: e471852c5ed67eea4b10c5d9d43c1cebae3b231d
   React-perflogger: d9815e398aa6e6016b8c0bef8b3033ab818f823d
   React-RCTActionSheet: 1ec7b3130b7878d5f818c105eeda38d25f1ebab1
   React-RCTAnimation: 26c31a4da3b7ac12c501fc82d43894f9beabe11a
@@ -541,14 +582,20 @@ SPEC CHECKSUMS:
   React-RCTVibration: 7a89bda87032c5fc0899bb6940ec42ffcb156d7a
   React-runtimeexecutor: 973fcbe10f76f42e3a9a98b9358836971e9ac4aa
   ReactCommon: 33191ccc8250b4e206884a1e3b68b2011b6b7899
-  RNCAsyncStorage: 0701cb7395f06d744184641241888a0eec0e2f2a
+  RNCAsyncStorage: 1ab3f6ec0bc2c676dad4a00471d4c9d1a2cf68a2
   RNCMaskedView: f5c7d14d6847b7b44853f7acb6284c1da30a3459
-  RNGestureHandler: 5e58135436aacc1c5d29b75547d3d2b9430d052c
+  RNCPushNotificationIOS: 5b1cf9ad2aaa107ecb92d5d2d7005ba521b2b97a
+  RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
+  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
-  RNScreens: b6c9607e6fe47c1b6e2f1910d2acd46dd7ecea3a
+  RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
+  RNSVG: ce9d996113475209013317e48b05c21ee988d42e
+  RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
+  SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
+  SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   Yoga: 31313df467e58b5b53f26a0319fa100159c79fa3
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 217b8967e09f5059d7513e1729707b2ed0fb1a1b
+PODFILE CHECKSUM: 52ec121e930057bac4accb6a0a6b9dfbd09bed27
 
 COCOAPODS: 1.10.1

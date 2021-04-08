@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import React, { FC, useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider as ReduxProvider, useDispatch } from 'react-redux';
+import { ToastProvider, ToastRenderer } from 'src/components/Toast';
 import { useNavigationRestore } from 'src/domains/core/hooks/useNavigationRestore';
 import { ModalNavigator } from 'src/domains/core/screens/ModalNavigator';
 import { SplashScreen } from 'src/domains/core/screens/SplashScreen';
@@ -13,9 +14,11 @@ import { theme } from 'src/theme';
 export const App: FC = () => (
   <ReduxProvider store={store}>
     <SafeAreaProvider>
-      <ThemeProvider theme={theme}>
-        <AppContainer />
-      </ThemeProvider>
+      <ToastProvider>
+        <ThemeProvider theme={theme}>
+          <AppContainer />
+        </ThemeProvider>
+      </ToastProvider>
     </SafeAreaProvider>
   </ReduxProvider>
 );
@@ -31,8 +34,9 @@ const AppContainer: FC = () => {
   return isReady ? (
     <NavigationContainer initialState={initialState} onStateChange={onStateChange}>
       <ModalNavigator />
+      <ToastRenderer />
     </NavigationContainer>
   ) : (
-    <SplashScreen />
-  );
+      <SplashScreen />
+    );
 };
