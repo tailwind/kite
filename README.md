@@ -14,6 +14,7 @@ We got a lot of value starting off from Infinite Red's [Ignite](https://github.c
 ## Getting Started
 
 <!--- How to fork and set up the project -->
+`npx react-native init ProjectName --template @tailwind/kite`
 
 ## Tech
 
