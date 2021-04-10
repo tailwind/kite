@@ -2,9 +2,11 @@ import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { setupListeners } from '@rtk-incubator/rtk-query';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { pokemonApi } from 'src/services/pokemonApi';
+import { authReducer } from 'src/state/authSlice';
 
 export const store = configureStore({
   reducer: {
+    auth: authReducer,
     [pokemonApi.reducerPath]: pokemonApi.reducer,
   },
   middleware: getDefaultMiddleware =>

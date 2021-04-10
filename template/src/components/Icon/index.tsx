@@ -1,7 +1,6 @@
 import React from 'react';
 import { Platform, StyleProp, ViewStyle } from 'react-native';
 import Image from 'react-native-fast-image';
-import { SvgProps } from 'react-native-svg';
 import { Icon as IconI, IconProps as IconPropsI } from 'react-native-vector-icons/Icon';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -13,9 +12,6 @@ type IconConfig =
   | {
     component: typeof Image;
     source: Function;
-  }
-  | {
-    component: React.FC<SvgProps>;
   };
 
 const iconMap: {
