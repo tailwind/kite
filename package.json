@@ -1,11 +1,25 @@
 {
   "name": "@tailwind/kite",
   "description": "A batteries included React Native boilerplate",
-  "version": "0.1.0",
+  "version": "0.0.1",
+  "keywords": [
+    "kite",
+    "react-native",
+    "typescript",
+    "template",
+    "boilerplate",
+    "starter"
+  ],
+  "author": "Garrett Cox <garrett@tailwindapp.com>",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:tailwind/kite.git"
+    "url": "git+https://github.com/tailwind/kite.git"
   },
+  "bugs": {
+    "url": "https://github.com/tailwind/kite/issues"
+  },
+  "homepage": "https://github.com/tailwind/kite",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
