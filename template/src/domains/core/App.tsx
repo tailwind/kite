@@ -1,3 +1,4 @@
+import { StacksProvider } from '@mobily/stacks';
 import { NavigationContainer } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -13,9 +14,11 @@ import { store } from 'src/state';
  */
 export const App: FC = () => (
   <ReduxProvider store={store}>
-    <SafeAreaProvider>
-      <AppContainer />
-    </SafeAreaProvider>
+    <StacksProvider>
+      <SafeAreaProvider>
+        <AppContainer />
+      </SafeAreaProvider>
+    </StacksProvider>
   </ReduxProvider>
 );
 

@@ -57,3 +57,9 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+# Template
+/template/package-lock.json
+/template/ios/Pods/
+/template/ios/Podfile.lock
+/template/ios/HelloWorld.xcworkspace/
