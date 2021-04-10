@@ -1,0 +1,103 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+default_platform(:ios)
+
+$root_dir = File.expand_path('..', Dir.pwd).freeze
+
+$app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+
+$xcodeproj_path = "ios/kite.xcodeproj"
+$xcworkspace_path = "ios/kite.xcworkspace"
+
+# iOS specific lanes
+platform :ios do
+  def ios_build(method)
+    xcversion(version: "12.2")
+
+    # pod install
+    cocoapods(podfile: "ios/Podfile")
+
+    # build the app
+    build_app(
+      workspace: $xcworkspace_path,
+      scheme: "kite",
+      export_options: {
+        method: method,
+      },
+      output_directory: 'fastlane/output/ios'
+    )
+  end
+
+  desc "Build an .ipa for beta distribution"
+  lane :beta_build do
+
+    match(type: "appstore")
+    update_code_signing_settings(
+      path:  "ios/kite.xcodeproj"
+    )
+    ios_build(
+      "app-store"
+    )
+  end
+
+  desc "Push a new beta build to TestFlight"
+  lane :beta_push do
+    # Increment build number in Xcode
+    build_number = get_build_number(xcodeproj: $xcodeproj_path)
+    version_number = get_version_number(
+      xcodeproj: $xcodeproj_path,
+      target: "tailwind"
+    )
+
+    beta_build
+
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true,
+      apple_id: ENV["APP_APPLE_ID"]
+    )
+  end
+end
+
+
+# Android specific lanes
+$android_ks_file = ENV["ANDROID_KS_FILE"]
+$android_ks_pass = ENV["ANDROID_KS_PASS"]
+$android_ks_key_alias = ENV["ANDROID_KS_KEY_ALIAS"]
+$android_ks_key_pass = ENV["ANDROID_KS_KEY_PASS"]
+
+platform :android do
+  desc "Build android for beta"
+  lane :beta_build do
+    gradle(task: "clean",
+           project_dir: "android")
+    gradle(
+      task: 'assemble',
+      build_type: 'Release',
+      project_dir: "android",
+      print_command: false,
+      properties: {
+        "android.injected.signing.store.file" => $android_ks_file,
+        "android.injected.signing.store.password" => $android_ks_pass,
+        "android.injected.signing.key.alias" => $android_ks_key_alias,
+        "android.injected.signing.key.password" => $android_ks_key_pass,
+      }
+    )
+  end
+
+  desc "Submit a new Beta Build to "
+  lane :beta_push do
+    beta_build
+
+    upload_to_play_store(track: 'beta')
+  end
+end
