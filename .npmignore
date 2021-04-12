@@ -3,9 +3,11 @@ package-lock.json
 
 template/package-lock.json
 template/node_modules
+template/.env
 
 template/ios/Pods/
 template/ios/Podfile.lock
 
 template/android/.gradle/
 template/android/app/build/
+
