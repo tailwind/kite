@@ -7,12 +7,12 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 type IconConfig =
   | ({
-    component: typeof IconI;
-  } & IconPropsI)
+      component: typeof IconI;
+    } & IconPropsI)
   | {
-    component: typeof Image;
-    source: Function;
-  };
+      component: typeof Image;
+      source: Function;
+    };
 
 const iconMap: {
   [index: string]: IconConfig;
@@ -24,6 +24,14 @@ const iconMap: {
   close: {
     component: MaterialIcons,
     name: 'close',
+  },
+  home: {
+    component: MaterialIcons,
+    name: 'extension',
+  },
+  settings: {
+    component: MaterialIcons,
+    name: 'settings',
   },
   ...Platform.select({
     ios: {},
