@@ -16,7 +16,7 @@ export const PokemonDetailScreen: FC = () => {
         <ActivityIndicator />
       ) : (
         <>
-          <Stack horizontal space={4} style={{ alignItems: 'center' }}>
+          <Stack horizontal space={4} align="center">
             <Text>{data?.id}</Text>
             <Text>{data?.name}</Text>
           </Stack>

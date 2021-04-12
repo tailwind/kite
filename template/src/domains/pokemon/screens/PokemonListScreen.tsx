@@ -41,7 +41,7 @@ const FlatListItem: FC<{ item: ResourceReference }> = ({ item }) => {
           <ActivityIndicator />
         ) : (
           <>
-            <Stack horizontal space={4} style={{ alignItems: 'center' }}>
+            <Stack horizontal space={4} align="center">
               <Text>{data?.id}</Text>
               <Text>{data?.name}</Text>
             </Stack>

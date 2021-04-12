@@ -12,7 +12,7 @@
   "dependencies": {
     "@emotion/native": "^11.0.0",
     "@emotion/react": "^11.1.5",
-    "@mobily/stacks": "^1.1.1",
+    "@mobily/stacks": "^1.1.2",
     "@react-native-async-storage/async-storage": "^1.15.2",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/bottom-tabs": "^5.11.9",
