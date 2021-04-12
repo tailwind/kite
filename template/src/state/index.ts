@@ -1,6 +1,7 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { setupListeners } from '@rtk-incubator/rtk-query';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { config } from 'src/services/config';
 import { pokemonApi } from 'src/services/pokemonApi';
 import { authReducer } from 'src/state/authSlice';
 
@@ -10,7 +11,10 @@ export const store = configureStore({
     [pokemonApi.reducerPath]: pokemonApi.reducer,
   },
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({ serializableCheck: false, immutableCheck: false }).concat(pokemonApi.middleware),
+    getDefaultMiddleware({
+      serializableCheck: config.dev.serializableCheck,
+      immutableCheck: config.dev.immutableCheck,
+    }).concat(pokemonApi.middleware),
 });
 
 setupListeners(store.dispatch);
