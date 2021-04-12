@@ -1,7 +1,7 @@
 {
   "name": "@tailwind/kite",
   "description": "A batteries included React Native boilerplate",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": [
     "kite",
     "react-native",
