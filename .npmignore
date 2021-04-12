@@ -4,7 +4,6 @@ package-lock.json
 template/package-lock.json
 template/ios/Pods/
 template/ios/Podfile.lock
-template/ios/HelloWorld.xcworkspace/
 
 template/android/.gradle/
 template/android/app/build/
