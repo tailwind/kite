@@ -1,0 +1,8 @@
+{
+  "preset": "react-native",
+  "setupFilesAfterEnv": ["@testing-library/jest-native/extend-expect"],
+  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+  "rootDir": "../../",
+  "testMatch": ["**/__tests__/unit/**/*.[jt]s?(x)", "**/?(*.)+(spec).[jt]s?(x)"],
+  "testPathIgnorePatterns": ["node_modules", "e2e"]
+}

@@ -1,0 +1,25 @@
+{
+  "testRunner": "jest",
+  "runnerConfig": "__tests__/e2e/jest.config.json",
+  "apps": {
+    "ios": {
+      "type": "ios.app",
+      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/HelloWorld.app",
+      "build": "xcodebuild -workspace ios/HelloWorld.xcworkspace -scheme HelloWorld -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build"
+    }
+  },
+  "devices": {
+    "simulator": {
+      "type": "ios.simulator",
+      "device": {
+        "type": "iPhone 12"
+      }
+    }
+  },
+  "configurations": {
+    "ios": {
+      "device": "simulator",
+      "app": "ios"
+    }
+  }
+}

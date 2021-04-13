@@ -6,7 +6,9 @@
   "globals": {
     "__DEV__": true
   },
-  "env": {},
+  "env": {
+    "jest": true
+  },
   "parserOptions": {
     "project": "tsconfig.json"
   },

@@ -19,7 +19,7 @@ export type BottomTabNavigatorProp<ScreenName extends keyof BottomTabNavigatorPa
 const Tab = createBottomTabNavigator<BottomTabNavigatorParams>();
 
 export const BottomTabNavigator: FC = () => (
-  <Tab.Navigator>
+  <Tab.Navigator initialRouteName="SettingsScreen">
     <Tab.Screen
       name="PokemonListScreen"
       component={PokemonListScreen}
