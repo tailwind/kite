@@ -51,12 +51,12 @@ export const screenTheme: Themeable<ScreenProps, ScreenParts> = {
     padding: {
       sm: {
         innerContainer: {
-          padding: 8,
+          padding: 2,
         },
       },
       lg: {
         innerContainer: {
-          padding: 16,
+          padding: 4,
         },
       },
     },

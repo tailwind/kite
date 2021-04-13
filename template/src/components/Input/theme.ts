@@ -91,29 +91,29 @@ export const inputTheme: Themeable<InputProps, InputParts> = {
       lg: {
         input: {
           fontSize: 'lg',
-          paddingVertical: 12,
-          paddingHorizontal: 14,
+          paddingVertical: 4,
+          paddingHorizontal: 4,
         },
       },
       md: {
         input: {
           fontSize: 'md',
-          paddingVertical: 10,
-          paddingHorizontal: 10,
+          paddingVertical: 3,
+          paddingHorizontal: 3,
         },
       },
       sm: {
         input: {
           fontSize: 'sm',
-          paddingVertical: 10,
-          paddingHorizontal: 10,
+          paddingVertical: 2,
+          paddingHorizontal: 2,
         },
       },
       xs: {
         input: {
           fontSize: 'xs',
-          paddingVertical: 2,
-          paddingHorizontal: 6,
+          paddingVertical: 1,
+          paddingHorizontal: 2,
         },
       },
     },

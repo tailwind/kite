@@ -163,3 +163,17 @@ export const colors = {
   'pink.800': '#702459',
   'pink.900': '#521B41',
 };
+
+export const colorOverrides = {
+  backgroundColor: colors,
+  borderBottomColor: colors,
+  borderColor: colors,
+  borderEndColor: colors,
+  borderLeftColor: colors,
+  borderRightColor: colors,
+  borderStartColor: colors,
+  borderTopColor: colors,
+  color: colors,
+  textDecorationColor: colors,
+  textShadowColor: colors,
+};

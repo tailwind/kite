@@ -46,8 +46,8 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
     size: {
       lg: {
         button: {
-          paddingVertical: 12,
-          paddingHorizontal: 14,
+          paddingVertical: 4,
+          paddingHorizontal: 10,
         },
         text: {
           fontSize: 'lg',
@@ -55,8 +55,8 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
       },
       md: {
         button: {
-          paddingVertical: 10,
-          paddingHorizontal: 10,
+          paddingVertical: 3,
+          paddingHorizontal: 8,
         },
         text: {
           fontSize: 'md',
@@ -64,8 +64,8 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
       },
       sm: {
         button: {
-          paddingVertical: 10,
-          paddingHorizontal: 10,
+          paddingVertical: 2,
+          paddingHorizontal: 6,
         },
         text: {
           fontSize: 'sm',
@@ -73,8 +73,8 @@ export const buttonTheme: Themeable<ButtonProps, ButtonParts> = {
       },
       xs: {
         button: {
-          paddingVertical: 2,
-          paddingHorizontal: 6,
+          paddingVertical: 1,
+          paddingHorizontal: 4,
         },
         text: {
           fontSize: 'xs',

@@ -15,10 +15,26 @@ export const contentTheme: Themeable<ContentProps, ContentParts> = {
     top: {},
     bottom: {},
     left: {
-      paddingHorizontal: 20,
+      paddingRight: 4,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    leftText: {
+      color: 'gray.600',
+    },
+    leftIcon: {
+      fontSize: 'lg',
     },
     right: {
-      paddingHorizontal: 20,
+      paddingLeft: 4,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    rightText: {
+      color: 'gray.600',
+    },
+    rightIcon: {
+      fontSize: 'lg',
     },
     text: {
       fontSize: 'sm',

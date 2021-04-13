@@ -1,6 +1,7 @@
 import { PartStyleProps } from '@emotion/react';
 import React, { FC, ReactElement, ReactNode } from 'react';
 import { StyleProp, Text, TextProps, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
+import { Icon, IconTypes } from 'src/components/Icon';
 import { useThemeable } from 'src/theme';
 
 export type ContentParts = {
@@ -9,7 +10,11 @@ export type ContentParts = {
   top: ViewStyle;
   bottom: ViewStyle;
   left: ViewStyle;
+  leftText: TextStyle;
+  leftIcon: ViewStyle;
   right: ViewStyle;
+  rightText: TextStyle;
+  rightIcon: ViewStyle;
   text: TextStyle;
   subText: TextStyle;
 };
@@ -19,25 +24,29 @@ export interface ContentProps extends ViewProps, PartStyleProps<ContentParts> {
   size?: 'md' | 'lg';
   text?: string | ReactNode;
   subText?: string | ReactNode;
-  leftIcon?: string;
-  rightIcon?: string;
-  renderLeft?: (props: ContentIconProps) => ReactNode;
+  leftIcon?: IconTypes;
+  leftText?: string | ReactNode;
+  rightIcon?: IconTypes;
+  rightText?: string | ReactNode;
+  renderLeft?: (props: ContentIconOrTextProps) => ReactNode;
   renderCenter?: (props: ContentCenterProps) => ReactNode;
   renderTop?: (props: ContentTopProps) => ReactNode;
   renderBottom?: (props: ContentBottomProps) => ReactNode;
-  renderRight?: (props: ContentIconProps) => ReactNode;
+  renderRight?: (props: ContentIconOrTextProps) => ReactNode;
 }
 
 export const Content: FC<ContentProps> = ({
   text,
   subText,
   leftIcon,
+  leftText,
   rightIcon,
-  renderLeft = (props: ContentIconProps) => <ContentIcon {...props} />,
+  rightText,
+  renderLeft = (props: ContentIconOrTextProps) => <ContentIconOrText {...props} />,
   renderCenter = (props: ContentCenterProps) => <ContentCenter {...props} />,
   renderTop,
   renderBottom,
-  renderRight = (props: ContentIconProps) => <ContentIcon {...props} />,
+  renderRight = (props: ContentIconOrTextProps) => <ContentIconOrText {...props} />,
   children,
   ...props
 }) => {
@@ -45,7 +54,13 @@ export const Content: FC<ContentProps> = ({
 
   return (
     <View style={style.row}>
-      {renderLeft?.({ iconName: leftIcon, style: style.left })}
+      {renderLeft?.({
+        iconName: leftIcon,
+        style: style.left,
+        text: leftText,
+        textStyle: style.leftText,
+        iconStyle: style.leftIcon,
+      })}
       {renderCenter?.({
         text: text || children,
         subText,
@@ -57,7 +72,13 @@ export const Content: FC<ContentProps> = ({
         renderTop,
         renderBottom,
       })}
-      {renderRight?.({ iconName: rightIcon, style: style.right })}
+      {renderRight?.({
+        iconName: rightIcon,
+        style: style.right,
+        text: rightText,
+        textStyle: style.rightText,
+        iconStyle: style.rightIcon,
+      })}
     </View>
   );
 };
@@ -103,15 +124,19 @@ export const ContentBottom: FC<ContentBottomProps> = ({ subText, bottomStyle, su
   </View>
 );
 
-export interface ContentIconProps {
+export interface ContentIconOrTextProps {
   style: StyleProp<ViewStyle>;
-  iconName?: string | ReactNode;
+  iconName?: IconTypes;
+  text?: string | ReactNode;
+  textStyle: StyleProp<TextStyle>;
+  iconStyle: StyleProp<ViewStyle>;
 }
 
-export const ContentIcon: FC<ContentIconProps> = ({ iconName, style }) =>
-  iconName ? (
+export const ContentIconOrText: FC<ContentIconOrTextProps> = ({ iconName, style, text, textStyle, iconStyle }) =>
+  iconName || text ? (
     <View style={style}>
-      <TextWrapper>{iconName}</TextWrapper>
+      {iconName && <Icon style={iconStyle} name={iconName} />}
+      {text && <TextWrapper style={textStyle}>{text}</TextWrapper>}
     </View>
   ) : null;
 

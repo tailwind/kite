@@ -11,13 +11,11 @@ import * as foundations from './foundations';
 
 export const theme = {
   overrides: {
-    backgroundColor: foundations.colors,
-    color: foundations.colors,
-    borderColor: foundations.colors,
-    borderBottomColor: foundations.colors,
+    ...foundations.colorOverrides,
+    ...foundations.borderRadiiOverrides,
+    ...foundations.spacingOverrides,
     fontWeight: foundations.fontWeights,
     fontSize: foundations.fontSizes,
-    borderRadius: foundations.borderRadii,
   },
   components: {
     Toast: toastTheme,
