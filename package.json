@@ -1,5 +1,5 @@
 {
-  "name": "@tailwind/kite",
+  "name": "@tailwindapp/kite",
   "description": "A batteries included React Native boilerplate",
   "version": "0.0.5",
   "keywords": [
@@ -20,9 +20,6 @@
     "url": "https://github.com/tailwind/kite/issues"
   },
   "homepage": "https://github.com/tailwind/kite",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "scripts": {},
   "dependencies": {},
   "devDependencies": {}

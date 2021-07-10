@@ -24,7 +24,7 @@ export const BottomTabNavigator: FC = () => (
       name="PokemonListScreen"
       component={PokemonListScreen}
       options={{
-        tabBarIcon: ({ color, size }) => <SearchIcon />,
+        tabBarIcon: () => <SearchIcon />,
         tabBarLabel: 'Pokemon',
       }}
     />
@@ -32,7 +32,7 @@ export const BottomTabNavigator: FC = () => (
       name="SettingsScreen"
       component={SettingsScreen}
       options={{
-        tabBarIcon: ({ color, size }) => <InfoIcon />,
+        tabBarIcon: () => <InfoIcon />,
         tabBarLabel: 'Settings',
       }}
     />
