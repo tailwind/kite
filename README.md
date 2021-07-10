@@ -14,6 +14,11 @@ We got a lot of value starting off from Infinite Red's [Ignite](https://github.c
 ## Getting Started
 
 <!--- How to fork and set up the project -->
+First you'll need to add our Github registry to your `~/.npmrc`
+```
+@tailwind:registry=https://npm.pkg.github.com
+```
+Then initialize the template with the following
 ```
 npx react-native init ProjectName --template @tailwind/kite
 ```
@@ -24,7 +29,7 @@ npx react-native init ProjectName --template @tailwind/kite
 
 - State Management: Redux + Redux Toolkit
 - Navigation: React Navigation
-- Component Lib: Custom
+- Component Lib: NativeBase 3.0
 - CI/CD: Github Actions, Fastlane, & CodePush
 - Testing: Jest & Detox
 
