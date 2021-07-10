@@ -1,5 +1,5 @@
-import { Box, Stack } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
+import { Box, HStack, Spacer } from 'native-base';
 import React, { FC, useCallback } from 'react';
 import { ActivityIndicator, FlatList, Text, TouchableOpacity } from 'react-native';
 import FastImage from 'react-native-fast-image';
@@ -29,23 +29,23 @@ const FlatListItem: FC<{ item: ResourceReference }> = ({ item }) => {
   const { data, isLoading } = useGetPokemonQuery(item.name);
   const navigation = useNavigation<BottomTabNavigatorProp<'PokemonListScreen'>>();
 
-  const onPress = useCallback(() => navigation.push('PokemonDetailScreen', { pokemonId: data!.name }), [
-    data,
-    navigation,
-  ]);
+  const onPress = useCallback(
+    () => navigation.push('PokemonDetailScreen', { pokemonId: data!.name }),
+    [data, navigation],
+  );
 
   return (
     <TouchableOpacity onPress={onPress}>
-      <Box padding={5} direction="row">
+      <Box padding={5} flexDirection="row">
         {isLoading ? (
           <ActivityIndicator />
         ) : (
           <>
-            <Stack horizontal space={4} align="center">
+            <HStack space={4} alignItems="center">
               <Text>{data?.id}</Text>
               <Text>{data?.name}</Text>
-            </Stack>
-            <Box flex="fluid" />
+            </HStack>
+            <Spacer />
             <FastImage style={{ height: 50, width: 50 }} source={{ uri: data?.sprites.front_default }} />
           </>
         )}

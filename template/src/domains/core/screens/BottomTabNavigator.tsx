@@ -1,7 +1,7 @@
 import { BottomTabNavigationProp, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { CompositeNavigationProp } from '@react-navigation/native';
+import { InfoIcon, SearchIcon } from 'native-base';
 import React, { FC } from 'react';
-import { Icon } from 'src/components/Icon';
 import { AppNavigatorProp } from 'src/domains/core/screens/AppNavigator';
 import { PokemonListScreen } from 'src/domains/pokemon/screens/PokemonListScreen';
 import { SettingsScreen } from 'src/domains/settings/screens/SettingsScreen';
@@ -24,7 +24,7 @@ export const BottomTabNavigator: FC = () => (
       name="PokemonListScreen"
       component={PokemonListScreen}
       options={{
-        tabBarIcon: ({ color, size }) => <Icon name="home" color={color} size={size} />,
+        tabBarIcon: ({ color, size }) => <SearchIcon />,
         tabBarLabel: 'Pokemon',
       }}
     />
@@ -32,7 +32,7 @@ export const BottomTabNavigator: FC = () => (
       name="SettingsScreen"
       component={SettingsScreen}
       options={{
-        tabBarIcon: ({ color, size }) => <Icon name="settings" color={color} size={size} />,
+        tabBarIcon: ({ color, size }) => <InfoIcon />,
         tabBarLabel: 'Settings',
       }}
     />
