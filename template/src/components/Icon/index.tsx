@@ -1,32 +1,5 @@
 import React from 'react';
-import { Platform, StyleProp, ViewStyle } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
-const iconMap = {
-  'circle-check': {
-    component: MaterialCommunityIcons,
-    name: 'check-circle-outline',
-  },
-  close: {
-    component: MaterialIcons,
-    name: 'close',
-  },
-  home: {
-    component: MaterialIcons,
-    name: 'extension',
-  },
-  settings: {
-    component: MaterialIcons,
-    name: 'settings',
-  },
-  ...Platform.select({
-    ios: {},
-    android: {},
-  }),
-};
-
-export type IconTypes = keyof typeof iconMap;
+import { StyleProp, Text, ViewStyle } from 'react-native';
 
 export interface IconProps {
   /**
@@ -42,7 +15,7 @@ export interface IconProps {
   /**
    * The name of the icon
    */
-  name: IconTypes;
+  name: string;
 
   /**
    * Prop for style.fontSize
@@ -62,7 +35,6 @@ export interface IconProps {
  */
 export function Icon(props: IconProps): React.ReactElement {
   const { name, ...rest } = props;
-  const { component: Component, ...iconConfig } = iconMap[name];
-  // @ts-ignore
-  return <Component {...iconConfig} {...rest} />;
+
+  return <Text>{name}</Text>
 }
